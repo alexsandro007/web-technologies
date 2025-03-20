@@ -1,0 +1,30 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.task {
+    margin-bottom: 30px;
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.result {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 3px;
+}
+
+button {
+    padding: 5px 10px;
+    margin: 5px;
+}
+
+input {
+    margin: 5px;
+    padding: 3px;
+}

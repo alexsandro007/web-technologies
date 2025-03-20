@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Delivery Order</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="form-container">
+    <form action="https://example.com/submit-order" method="post" enctype="multipart/form-data" id="order-form">
+      <h1>Food Delivery Order</h1>
+
+      <!-- Customer Name -->
+      <label for="customer-name">Full Name *</label>
+      <input type="text" id="customer-name" name="customer-name" placeholder="Enter your full name" required>
+
+      <!-- Email -->
+      <label for="email">Email Address *</label>
+      <input type="email" id="email" name="email" placeholder="Enter a valid email" required>
+
+      <!-- Phone Number -->
+      <label for="phone">Phone Number *</label>
+      <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+
+      <!-- Address -->
+      <label for="address">Delivery Address *</label>
+      <input type="text" id="address" name="address" placeholder="Enter your delivery address" required>
+
+      <!-- Food Category -->
+      <label for="food-category">Select Food Category *</label>
+      <select class="food-category" id="food-category" name="food-category" required>
+        <option value="" disabled selected>Select a category</option>
+        <option value="fast-food">Fast Food</option>
+        <option value="healthy">Healthy</option>
+        <option value="desserts">Desserts</option>
+        <option value="drinks">Drinks</option>
+      </select>
+
+      <!-- Food Preferences -->
+      <fieldset>
+        <legend><strong>Food Preferences *</strong></legend>
+        <label><input type="checkbox" name="preferences" value="vegetarian" required> Vegetarian</label>
+        <label><input type="checkbox" name="preferences" value="vegan"> Vegan</label>
+        <label><input type="checkbox" name="preferences" value="gluten-free"> Gluten_Free</label>
+        <label><input type="checkbox" name="preferences" value="spicy"> Spicy</label>
+      </fieldset>
+
+      <!-- Spiciness Level -->
+      <label for="spiciness">Spiciness Level *</label>
+      <input type="range" id="spiciness" name="spiciness" min="1" max="10" value="5" oninput="spicinessOutput.value = spiciness.value">
+      <output id="spicinessOutput">5</output>
+
+      <!-- Special Requests -->
+      <label for="special-requests">Special Requests</label>
+      <textarea id="special-requests" name="special-requests" placeholder="Enter any special requests"></textarea>
+
+      <!-- Payment Method -->
+      <label for="payment-method">Payment Method *</label>
+      <select id="payment-method" name="payment-method" required>
+        <option value="credit-card">Credit Card</option>
+        <option value="cash-on-delivery">Cash on Delivery</option>
+        <option value="paypal">PayPal</option>
+      </select>
+
+      <!-- Profile Picture (Optional) -->
+      <label for="profile-picture">Upload Profile Picture (Optional)</label>
+      <input type="file" id="profile-picture" name="profile-picture" accept="image/*">
+
+      <!-- Submit Button -->
+      <button type="submit">Place Order</button>
+    </form>
+  </div>
+
+  <script>
+    // Ensure spiciness level updates dynamically
+    const form = document.getElementById('order-form');
+    const spiciness = document.getElementById('spiciness');
+    const spicinessOutput = document.getElementById('spicinessOutput');
+    spiciness.addEventListener('input', function() {
+      spicinessOutput.value = spiciness.value;
+    });
+  </script>
+</body>
+</html>

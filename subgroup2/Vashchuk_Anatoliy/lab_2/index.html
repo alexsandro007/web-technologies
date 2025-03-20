@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Delivery Order</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="grid-container">
+    <div class="grid-x grid-margin-x align-center">
+      <div class="cell medium-8 large-6">
+        <form action="https://example.com/submit-order" method="post" enctype="multipart/form-data" id="order-form">
+          <h1 class="text-center">Food Delivery Order</h1>
+
+          <label>Full Name *</label>
+          <input type="text" id="customer-name" name="customer-name" placeholder="Enter your full name" required>
+
+          <label>Email Address *</label>
+          <input type="email" id="email" name="email" placeholder="Enter a valid email" required>
+
+          <label>Phone Number *</label>
+          <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+
+          <label>Delivery Address *</label>
+          <input type="text" id="address" name="address" placeholder="Enter your delivery address" required>
+
+          <label>Select Food Category *</label>
+          <select id="food-category" name="food-category" required>
+            <option value="" disabled selected>Select a category</option>
+            <option value="fast-food">Fast Food</option>
+            <option value="healthy">Healthy</option>
+            <option value="desserts">Desserts</option>
+            <option value="drinks">Drinks</option>
+          </select>
+
+          <fieldset>
+            <legend><strong>Food Preferences *</strong></legend>
+            <input type="checkbox" name="preferences" value="vegetarian" id="vegetarian" required>
+            <label for="vegetarian">Vegetarian</label>
+            <input type="checkbox" name="preferences" value="vegan" id="vegan">
+            <label for="vegan">Vegan</label>
+            <input type="checkbox" name="preferences" value="gluten-free" id="gluten-free">
+            <label for="gluten-free">Gluten Free</label>
+            <input type="checkbox" name="preferences" value="spicy" id="spicy">
+            <label for="spicy">Spicy</label>
+          </fieldset>
+
+          <label>Spiciness Level *</label>
+          <input type="range" id="spiciness" name="spiciness" min="1" max="10" value="5" oninput="spicinessOutput.value = spiciness.value">
+          <output id="spicinessOutput">5</output>
+
+          <label>Special Requests</label>
+          <textarea id="special-requests" name="special-requests" placeholder="Enter any special requests"></textarea>
+
+          <label>Payment Method *</label>
+          <select id="payment-method" name="payment-method" required>
+            <option value="credit-card">Credit Card</option>
+            <option value="cash-on-delivery">Cash on Delivery</option>
+            <option value="paypal">PayPal</option>
+          </select>
+
+          <label>Upload Profile Picture (Optional)</label>
+          <input type="file" id="profile-picture" name="profile-picture" accept="image/*">
+
+          <button type="submit" class="button expanded">Place Order</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/foundation-sites/dist/js/foundation.min.js"></script>
+  <script>
+    $(document).foundation();
+    $('#spiciness').on('input', function() {
+      $('#spicinessOutput').val(this.value);
+    });
+  </script>
+</body>
+</html>

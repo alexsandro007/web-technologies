@@ -1,0 +1,132 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f1e4fc;
+  margin: 0;
+  padding: 20px;
+}
+
+.form-container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+form h1 {
+  font-size: 1.5em;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+input, textarea, select {
+  border: none; /* Убираем все границы */
+  border-bottom: 2px solid #000; /* Добавляем только нижнюю границу */
+  padding: 5px; /* Немного отступа для удобства ввода */
+  width: 100%; /* Растягиваем элементы на всю ширину контейнера */
+  box-sizing: border-box; /* Учитываем отступы и границы в ширине элемента */
+}
+
+input[type="number"] {
+  width: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input:focus, textarea:focus, select:focus {
+outline:none;
+  border-bottom: 2px solid #007BFF; 
+}
+
+input:invalid, textarea:invalid, select:invalid {
+  border-color: #14b516;
+}
+
+input:valid, textarea:valid, select:valid {
+  border-color: #00ff00;
+}
+
+button {
+  margin-top: 20px;
+  background-color: #001bea;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 1em;
+  border-radius: 4px;
+  width: 100%;
+}
+
+button:hover {
+  background-color: #926262;
+}
+
+#optional-section {
+  margin-top: 15px;
+}
+
+output {
+  display: block;
+  margin-top: 3px;
+  font-size: 1em;
+  color: #000;
+}
+
+fieldset {
+  display: flex;
+  border: none;
+  flex-direction: column; /* Arrange elements in a column */
+  align-items: flex-start; /* Align everything to the left */
+  margin: 0;
+  padding: 0;
+}
+
+fieldset label {
+  display: flex;
+  margin-bottom: 0px; /* Space between each checkbox and its label */
+}
+
+fieldset input[type="checkbox"] {
+  margin-right: 10px; /* Space between checkbox and label */
+}
+
+select {
+  appearance: none; /* Remove default dropdown arrow */
+  -webkit-appearance: none; /* For Safari */
+  -moz-appearance: none; /* For Firefox */
+  background: transparent; /* Make background transparent */
+  padding-right: 30px; /* Add some space for the custom arrow */
+  border-bottom: 2px solid #000; /* Bottom border */
+  width: 100%; /* Full width */
+  box-sizing: border-box; /* Include padding and border in width */
+  font-size: 1em; /* Adjust font size */
+}
+
+select:focus {
+  border-color: #ff0040; /* Border color on focus */
+}
+
+select::after {
+  content: '▼'; /* Custom dropdown arrow */
+  font-size: 1.2em;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%); /* Center the arrow vertically */
+  pointer-events: none; /* Prevent the arrow from blocking interaction with the select */
+}
+
+.form-container {
+  position: relative; /* Make sure the select dropdown works correctly */
+}
+

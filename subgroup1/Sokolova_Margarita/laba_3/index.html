@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lab_3</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3c2c2;
+            margin: 20px;
+        }
+        h2 {
+            text-align: center; /* Выровнять заголовок по центру */
+        }
+        .task {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #b897a6;
+            background-color: #f5dede;
+            border-radius: 5px;
+        }
+        button {
+            padding: 5px 15px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        input {
+            margin: 5px;
+            padding: 5px;
+        }
+        .result {
+            margin-top: 10px;
+            color: #af4b67;
+        }
+    </style>
+</head>
+<body>
+    <div class="task">
+        <h2>Задача 1: Сравнение чисел</h2>
+        <input id="num1" placeholder="Первое число (q для выхода)">
+        <input id="num2" placeholder="Второе число (q для выхода)">
+        <button onclick="compareNumbers()">Сравнить</button>
+        <div id="result1" class="result"></div>
+    </div>
+    
+    <div class="task">
+        <h2>Задача 2: Номер подъезда</h2>
+        <input id="floors" placeholder="Этажи (1-20)">
+        <input id="entrances" placeholder="Подъезды (1-15)">
+        <input id="flatsPerFloor" placeholder="Квартир на этаже (1-5)">
+        <input id="flatNumber" placeholder="Номер квартиры">
+        <button onclick="getEntranceNumber()">Рассчитать</button>
+        <div id="result2" class="result"></div>
+    </div>
+    
+    <div class="task">
+        <h2>Задача 3: День недели</h2>
+        <input id="month" placeholder="Месяц (1-12)">
+        <input id="day" placeholder="День (1-31)">
+        <button onclick="getDayOfWeek()">Узнать день</button>
+        <div id="result3" class="result"></div>
+    </div>
+
+    <div class="task">
+        <h2>Задача 4: Обработка чисел</h2>
+        <input id="numA" placeholder="Первое число">
+        <input id="numB" placeholder="Второе число">
+        <button onclick="processNumbersUI()">Обработать</button>
+        <div id="result4" class="result"></div>
+    </div>
+
+    <div class="task">
+        <h2>Задача 5: Сумма трёх чисел</h2>
+        <input id="sum1" placeholder="Введите числа через запятую">
+        <button onclick="sumUI()">Суммировать</button>
+        <div id="result5" class="result"></div>
+    </div>
+
+    <div class="task">
+        <h2>Задача 6: Диапазон</h2>
+        <input id="rangeStart" placeholder="Начало">
+        <input id="rangeFinish" placeholder="Конец">
+        <input id="rangeStep" placeholder="Шаг (по умолчанию 1)">
+        <button onclick="rangeUI()">Создать</button>
+        <div id="result6" class="result"></div>
+    </div>
+
+    <div class="task">
+        <h2>Задача 7: Матрицы</h2>
+        <input id="rows" placeholder="Строки">
+        <input id="cols" placeholder="Столбцы">
+        <button onclick="matrixUI()">Создать и суммировать</button>
+        <div id="result7" class="result"></div>
+    </div>
+
+    <div class="task">
+        <h2>Задача 8: Уникальные элементы</h2>
+        <input id="arrays" placeholder="Массивы через ; (пример: 1,2,3;4,5,6)">
+        <button onclick="unionUI()">Объединить</button>
+        <div id="result8" class="result"></div>
+    </div>
+
+    <div class="task">
+        <h2>Задача 9: Выравнивание массива</h2>
+        <input id="nestedArray" placeholder="Массив (пример: [1,[2],[[3]]])">
+        <button onclick="flattenUI()">Выровнять</button>
+        <div id="result9" class="result"></div>
+    </div>
+
+    <div class="task">
+        <h2>Задача 10: Уникальные элементы с лимитом</h2>
+        <input id="inputArray" placeholder="Массив или строка">
+        <input id="count" placeholder="Макс. повторений">
+        <button onclick="uniqueUI()">Обработать</button>
+        <div id="result10" class="result"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

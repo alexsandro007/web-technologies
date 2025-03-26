@@ -1,0 +1,123 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(0, 139, 139); /* Новый фоновый цвет */
+    margin: 0;
+    padding: 20px;
+}
+  
+form {
+    max-width: 700px;
+    margin: auto;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+  
+h2 {
+    text-align: center;
+    color: #000000;
+    font-size: 24px;
+}
+  
+label {
+    font-weight: bold;
+    margin-top: 10px;
+    display: block;
+    font-size: 16px;
+}
+  
+input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+  
+textarea, select, button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+  
+input[type="radio"], input[type="checkbox"] {
+    width: auto;
+    margin-right: 10px;
+}
+  
+input:focus, textarea:focus, select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+  
+input:invalid {
+    border-color: #dc3545;
+}
+  
+input:valid {
+    border-color: #28a745;
+}
+  
+button {
+    background-color: #B22222; /* Новый цвет кнопки */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
+  
+button:hover {
+    background-color: #B22222; /* Оставляем тот же цвет при наведении */
+}
+  
+.hidden-section {
+    display: none;
+}
+  
+button[type="button"] {
+    background-color: #f0f0f0;
+    color: rgb(208, 57, 57);
+    border: 1px solid #ddd;
+    padding: 8px 16px;
+}
+  
+button[type="button"]:hover {
+    background-color: rgb(208, 57, 57);
+    color: white;
+}
+  
+/* Дополнительные стили для темы социальных сетей */
+h2 {
+    color:rgb(0, 0, 0); /* Белый цвет для заголовков */
+}
+  
+form {
+    background: rgba(255, 255, 255, 0.8); /* Легкий белый фон для формы */
+    border-radius: 10px;
+}
+  
+input, textarea, select, button {
+    border-radius: 10px; /* Более округлые углы */
+    font-weight: bold; /* Толстый шрифт для ввода */
+}
+  
+button {
+    background-color: #1a73e8; /* Цвет кнопки, похожий на стиль соцсетей */
+}
+  
+button:hover {
+    background-color: #1669c1; /* Темный оттенок при наведении */
+}
+  
+input:focus, textarea:focus, select:focus {
+    border-color: #1a73e8; /* Цвет рамки при фокусе */
+    box-shadow: 0 0 8px rgba(26, 115, 232, 0.5); /* Синяя тень при фокусе */
+}

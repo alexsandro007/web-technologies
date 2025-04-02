@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Бронирование завершено</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <nav>
+        <a href="/">Главная</a>
+        <a href="/search">Поиск билетов</a>
+    </nav>
+    <h1>Бронирование успешно завершено</h1>
+    <p>Имя: <%= name %></p>
+    <p>Номер рейса: <%= flightNumber %></p>
+    <p>Дата: <%= date %></p>
+    <p>E-mail: <%= email %></p>
+    <p>Количество пассажиров: <%= passengers %></p>
+
+    <form action="/delete" method="POST">
+        <input type="hidden" name="flightNumber" value="<%= flightNumber %>">
+        <button type="submit">Удалить бронирование</button>
+    </form>
+    
+    <form action="/edit/<%= flightNumber %>" method="GET">
+        <button type="submit">Редактировать бронирование</button>
+    </form>
+</body>
+</html>

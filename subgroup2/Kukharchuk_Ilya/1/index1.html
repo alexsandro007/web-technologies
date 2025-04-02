@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Adoption Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        .form-container h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #007BFF;
+            outline: none;
+        }
+        .form-group input:invalid {
+            border-color: #dc3545;
+        }
+        .form-group input:valid {
+            border-color: #28a745;
+        }
+        .form-group textarea {
+            resize: vertical;
+        }
+        .form-group .toggle {
+            display: none;
+        }
+        .form-group .toggle + label {
+            cursor: pointer;
+            display: inline-block;
+            margin-left: 10px;
+        }
+        .form-group .toggle:checked + label::after {
+            content: "✅";
+            color: green;
+        }
+        .form-group .toggle:not(:checked) + label::after {
+            content: "❌";
+            color: red;
+        }
+        .form-group .output {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #e9ecef;
+            border-radius: 4px;
+        }
+        .form-group .output code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        .form-group .progress-container {
+            margin-top: 10px;
+        }
+        .form-group .progress-container progress {
+            width: 100%;
+            height: 20px;
+        }
+        .form-group .counter {
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #777;
+        }
+        .form-group .counter span {
+            font-weight: bold;
+        }
+        .form-group .menu {
+            margin-top: 10px;
+        }
+        .form-group .menu button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .form-group .menu button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Pet Adoption Form</h2>
+        <form action="https://example.com/submit" method="post">
+            <div class="form-group">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" required minlength="3" maxlength="50" pattern="[A-Za-z\s]+" title="Please enter your full name.">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}" title="Please enter a 10-digit phone number.">
+            </div>
+            <div class="form-group">
+                <label for="pet-type">Preferred Pet Type:</label>
+                <select id="pet-type" name="pet-type" required>
+                    <option value="">Select...</option>
+                    <option value="dog">Dog</option>
+                    <option value="cat">Cat</option>
+                    <option value="bird">Bird</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <textarea id="address" name="address" rows="3" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required minlength="5" maxlength="20" pattern="[A-Za-z0-9]+" title="Username must be alphanumeric.">
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Password must be at least 8 characters long and include at least one number, one lowercase, and one uppercase letter.">
+            </div>
+            <div class="form-group">
+                <label for="color">Favorite Color:</label>
+                <input type="color" id="color" name="color">
+            </div>
+            <div class="form-group">
+                <label for="birthdate">Date of Birth:</label>
+                <input type="date" id="birthdate" name="birthdate" required>
+            </div>
+            <div class="form-group">
+                <label for="bio">Short Bio:</label>
+                <textarea id="bio" name="bio" rows="4" maxlength="200"></textarea>
+                <div class="counter">Characters used: <span id="bio-counter">0</span>/200</div>
+            </div>
+            <div class="form-group">
+                <label for="agree">I agree to the terms and conditions:</label>
+                <input type="checkbox" id="agree" name="agree" class="toggle" required>
+                <label for="agree"></label>
+            </div>
+            <div class="form-group">
+                <label for="file">Upload a Photo of Your Pet:</label>
+                <input type="file" id="file" name="file" accept="image/*">
+            </div>
+            <div class="form-group">
+                <label for="range">Rate Your Experience:</label>
+                <input type="range" id="range" name="range" min="1" max="5">
+                <output for="range" id="range-output">3</output>
+            </div>
+            <div class="form-group">
+                <label for="progress">Progress:</label>
+                <div class="progress-container">
+                    <progress id="progress" value="50" max="100"></progress>
+                </div>
+            </div>
+            <div class="form-group menu">
+                <button type="submit">Submit</button>
+                <button type="reset">Reset</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const bioTextarea = document.getElementById('bio');
+            const bioCounter = document.getElementById('bio-counter');
+            bioTextarea.addEventListener('input', function() {
+                bioCounter.textContent = bioTextarea.value.length;
+            });
+
+            const rangeInput = document.getElementById('range');
+            const rangeOutput = document.getElementById('range-output');
+            rangeInput.addEventListener('input', function() {
+                rangeOutput.textContent = rangeInput.value;
+            });
+        });
+    </script>
+</body>
+</html>

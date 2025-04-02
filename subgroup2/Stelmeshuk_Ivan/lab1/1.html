@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Бронирование билетов на морской круиз</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Бронирование билетов на морской круиз</h1>
+
+    <form action="URL_подавания_данных" method="POST" id="cruiseForm">
+      <label for="name">Ваше имя:</label>
+      <input type="text" id="name" name="name" required value="Иван Иванов" placeholder="Введите ваше имя">
+      
+      <label for="email">Ваш email:</label>
+      <input type="email" id="email" name="email" required placeholder="Введите ваш email">
+      
+      <label for="password">Пароль:</label>
+      <input type="password" id="password" name="password" required minlength="6" placeholder="Введите пароль">
+      
+      <label for="startDate">Дата отправления:</label>
+      <input type="date" id="startDate" name="startDate" required>
+      
+      <label for="cabinType">Тип каюты:</label>
+      <select id="cabinType" name="cabinType">
+        <option value="economy">Эконом</option>
+        <option value="luxury">Люкс</option>
+      </select>
+
+      <label for="message">Дополнительная информация:</label>
+      <textarea id="message" name="message" placeholder="Введите вашу дополнительную информацию"></textarea>
+
+      <button type="button" id="showCabin">Показать/скрыть дополнительные опции</button>
+      <div id="cabinSection" class="hidden">
+        <label for="roomPreference">Предпочтения по каютам:</label>
+        <select id="roomPreference" name="roomPreference">
+          <option value="balcony">С балконом</option>
+          <option value="noBalcony">Без балкона</option>
+        </select>
+      </div>
+
+      <label for="phone">Телефон:</label>
+      <input type="tel" id="phone" name="phone" pattern="^\+375\d{9}$" title="Введите номер в формате +375 xx xxx xx xx" required placeholder="Введите ваш телефон">
+      
+      <label for="age">Возраст:</label>
+      <input type="number" id="age" name="age" min="18" max="100" required placeholder="Введите ваш возраст">
+      
+      <label for="progress">Прогресс заполнения формы:</label>
+      <progress id="progress" value="0" max="100"></progress>
+
+      <button type="submit">Отправить</button>
+      <button type="reset">Сбросить</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('showCabin').addEventListener('click', function() {
+      const cabinSection = document.getElementById('cabinSection');
+      cabinSection.classList.toggle('hidden');
+    });
+
+    const form = document.getElementById('cruiseForm');
+    const progressBar = document.getElementById('progress');
+
+    form.addEventListener('input', function() {
+      let totalFields = form.querySelectorAll('input[required], select[required], textarea[required]').length;
+      let filledFields = form.querySelectorAll('input[required]:valid, select[required]:valid, textarea[required]:valid').length;
+      let progress = (filledFields / totalFields) * 100;
+      progressBar.value = progress;
+    });
+  </script>
+</body>
+</html>

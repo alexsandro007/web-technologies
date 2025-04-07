@@ -1,0 +1,454 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lab Work</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .task {
+      margin-bottom: 40px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    .task h2 {
+      margin-top: 0;
+    }
+    input, button {
+      margin: 5px 0;
+      padding: 8px;
+    }
+    button {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Task 1 -->
+  <div class="task" id="task1">
+    <h2>Task 1: Compare Numbers</h2>
+    <input type="text" id="num1" placeholder="Enter first number">
+    <input type="text" id="num2" placeholder="Enter second number">
+    <button onclick="compareNumbers()">Compare</button>
+    <p id="result1"></p>
+  </div>
+
+  <!-- Task 2 -->
+  <div class="task" id="task2">
+    <h2>Task 2: Calculate Entrance</h2>
+    <input type="number" id="floors" placeholder="Number of floors" min="1" max="20">
+    <input type="number" id="entrances" placeholder="Number of entrances" min="1" max="15">
+    <input type="number" id="flatsPerFloor" placeholder="Flats per floor" min="1" max="5">
+    <input type="number" id="flatNumber" placeholder="Flat number">
+    <button onclick="calculateEntrance()">Calculate Entrance</button>
+    <p id="result2"></p>
+  </div>
+
+  <!-- Task 3 -->
+  <div class="task" id="task3">
+    <h2>Task 3: Calculate Day of Week</h2>
+    <input type="number" id="month" placeholder="Month (1-12)" min="1" max="12">
+    <input type="number" id="day" placeholder="Day (1-31)" min="1" max="31">
+    <button onclick="calculateDayOfWeek()">Calculate Day</button>
+    <p id="result3"></p>
+  </div>
+
+  <!-- Task 4 -->
+  <div class="task" id="task4">
+    <h2>Task 4: Even-Odd Comparison</h2>
+    <input type="number" id="numA" placeholder="Enter first number">
+    <input type="number" id="numB" placeholder="Enter second number">
+    <button onclick="compareEvenOdd()">Compare</button>
+    <p id="result4"></p>
+  </div>
+
+  <!-- Task 5 -->
+  <div class="task" id="task5">
+    <h2>Task 5: Sum Function</h2>
+    <input type="number" id="numN" placeholder="Enter number n (count)">
+    <button onclick="createInputFields()">Create Input Fields</button>
+    <div id="inputFieldsContainer"></div>
+    <button onclick="calculateSum()" style="display: none;" id="calculateButton">Calculate Sum</button>
+    <p id="result5"></p>
+  </div>
+
+  <!-- Task 6 -->
+  <div class="task" id="task6">
+    <h2>Task 6: Range Function</h2>
+    <input type="number" id="start" placeholder="Start">
+    <input type="number" id="end" placeholder="End">
+    <input type="number" id="step" placeholder="Step" value="1">
+    <button onclick="generateRange()">Generate Range</button>
+    <p id="result6"></p>
+  </div>
+
+  <!-- Task 7 -->
+  <div class="task" id="task7">
+    <h2>Task 7: Matrix Operations</h2>
+    <label for="rows">Number of Rows:</label>
+    <input type="number" id="rows" placeholder="Enter number of rows">
+    <label for="cols">Number of Columns:</label>
+    <input type="number" id="cols" placeholder="Enter number of columns">
+    <button onclick="generateAndSumMatrices()">Generate and Sum Matrices</button>
+    <p id="matrix1"></p>
+    <p id="matrix2"></p>
+    <p id="sumMatrix"></p>
+    <p id="result7"></p>
+  </div>
+  
+  <!-- Task 8 -->
+  <div class="task" id="task8">
+    <h2>Task 8: Union of Arrays</h2>
+    <input type="text" id="arraysInput" placeholder="Enter arrays, e.g. [1,2],[3,4]">
+    <button onclick="unionArrays()">Union</button>
+    <p id="result8"></p>
+  </div>
+
+  <!-- Task 9 -->
+  <div class="task" id="task9">
+    <h2>Task 9: Flatten Array</h2>
+    <input type="text" id="arrayInput" placeholder="Enter nested array, e.g. [1,[2],[[3]]]">
+    <button onclick="flattenArray()">Flatten</button>
+    <p id="result9"></p>
+  </div>
+
+  <!-- Task 10 -->
+  <div class="task" id="task10">
+    <h2>Task 10: Unique Elements</h2>
+    <input type="text" id="uniqueInput" placeholder="Enter array, e.g. [1,2,1,3]">
+    <input type="number" id="uniqueCount" placeholder="Unique count" min="1">
+    <button onclick="uniqueElements()">Get Unique</button>
+    <p id="result10"></p>
+  </div>
+
+  <script>
+    // Task 1
+    function compareNumbers() {
+      const num1 = document.getElementById('num1').value;
+      const num2 = document.getElementById('num2').value;
+      const result = document.getElementById('result1');
+
+      if (num1.toLowerCase() === 'q' || num2.toLowerCase() === 'q') {
+        result.innerText = "Script terminated.";
+        return;
+      }
+
+      const number1 = parseFloat(num1);
+      const number2 = parseFloat(num2);
+
+      if (isNaN(number1) && isNaN(number2)) {
+        result.innerText = "Both inputs are not numbers.";
+      } else if (isNaN(number1)) {
+        result.innerText = "First input is not a number.";
+      } else if (isNaN(number2)) {
+        result.innerText = "Second input is not a number.";
+      } else if (number1 === number2) {
+        result.innerText = "Numbers are equal.";
+      } else if (number1 < number2) {
+        result.innerText = "First number is less.";
+      } else {
+        result.innerText = "Second number is less.";
+      }
+    }
+
+    // Task 2
+    function calculateEntrance() {
+      // Получаем значения из input
+      const floors = parseInt(document.getElementById('floors').value);
+      const entrances = parseInt(document.getElementById('entrances').value);
+      const flatsPerFloor = parseInt(document.getElementById('flatsPerFloor').value);
+      const flatNumber = parseInt(document.getElementById('flatNumber').value);
+
+      // Очищаем предыдущий результат
+      document.getElementById('result2').textContent = '';
+
+      try {
+        // Проверяем корректность введенных данных
+        if (isNaN(floors) || floors < 1 || floors > 20) {
+          throw new Error('Некорректное количество этажей. Введите число от 1 до 20.');
+        }
+        if (isNaN(entrances) || entrances < 1 || entrances > 15) {
+          throw new Error('Некорректное количество подъездов. Введите число от 1 до 15.');
+        }
+        if (isNaN(flatsPerFloor) || flatsPerFloor < 1 || flatsPerFloor > 5) {
+          throw new Error('Некорректное количество квартир на этаже. Введите число от 1 до 5.');
+        }
+        if (isNaN(flatNumber) || flatNumber < 1) {
+          throw new Error('Некорректный номер квартиры. Введите положительное число.');
+        }
+
+        // Рассчитываем общее количество квартир в одном подъезде
+        const flatsPerEntrance = floors * flatsPerFloor;
+
+        // Рассчитываем номер подъезда
+        const entranceNumber = Math.ceil(flatNumber / flatsPerEntrance);
+
+        // Проверяем, существует ли такая квартира в доме
+        if (entranceNumber > entrances) {
+          throw new Error('Квартиры с таким номером нет в доме.');
+        }
+
+        // Выводим результат
+        document.getElementById('result2').textContent = `Квартира находится в подъезде №${entranceNumber}.`;
+      } catch (error) {
+        // Выводим сообщение об ошибке
+        document.getElementById('result2').textContent = error.message;
+      }
+    }
+
+    // Task 3
+    function calculateDayOfWeek() {
+      const month = parseInt(document.getElementById('month').value);
+      const day = parseInt(document.getElementById('day').value);
+      const result = document.getElementById('result3');
+
+      if (isNaN(month) || isNaN(day)) {
+        result.innerText = "Please enter valid numbers.";
+        return;
+      }
+
+      const date = new Date(`2022-${month}-${day}`);
+      const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+      result.innerText = `Day of the week: ${days[date.getDay()]}`;
+    }
+
+    // Task 4
+    function compareEvenOdd() {
+      const numA = parseInt(document.getElementById('numA').value);
+      const numB = parseInt(document.getElementById('numB').value);
+      const result = document.getElementById('result4');
+
+      if (isNaN(numA) || isNaN(numB)) {
+        result.innerText = "Please enter valid numbers.";
+        return;
+      }
+
+      if (numA % 2 === 0 && numB % 2 === 0) {
+        result.innerText = `Result: ${numA * numB}`;
+      } else if (numA % 2 !== 0 && numB % 2 !== 0) {
+        result.innerText = `Result: ${numA + numB}`;
+      } else {
+        result.innerText = `Result: ${numB}`;
+      }
+    }
+
+    // Task 5
+    // Функция для создания полей ввода
+    function createInputFields() {
+      const numN = parseInt(document.getElementById('numN').value);
+      const container = document.getElementById('inputFieldsContainer');
+      container.innerHTML = ""; // Очищаем контейнер
+
+      if (isNaN(numN) || numN <= 0) {
+        alert("Please enter a valid positive number for n.");
+        return;
+      }
+
+      // Создаем n полей для ввода
+      for (let i = 0; i < numN; i++) {
+        const input = document.createElement("input");
+        input.type = "number";
+        input.placeholder = `Enter number ${i + 1}`;
+        input.classList.add("dynamicInput");
+        container.appendChild(input);
+      }
+
+      // Показываем кнопку для вычисления суммы
+      document.getElementById('calculateButton').style.display = "block";
+    }
+
+    // Функция sum в стиле каррирования
+    function sum(n) {
+      return function(m) {
+        return function(k) {
+          return function(...args) {
+            // Складываем все числа: m, k и остальные аргументы
+            return n + m + k + args.reduce((acc, val) => acc + val, 0);
+          };
+        };
+      };
+    }
+
+    // Функция для вычисления суммы
+    function calculateSum() {
+      const inputs = document.querySelectorAll('.dynamicInput');
+      const numbers = Array.from(inputs).map(input => parseFloat(input.value));
+
+      // Проверяем, что все поля заполнены корректно
+      if (numbers.some(isNaN)) {
+        document.getElementById('result5').innerText = "Please enter valid numbers in all fields.";
+        return;
+      }
+
+      // Вызываем функцию sum с введёнными числами
+      const [n, m, k, ...rest] = numbers;
+      const result = sum(n)(m)(k)(...rest);
+
+      // Выводим результат
+      document.getElementById('result5').innerText = `Result: ${result}`;
+    }
+
+    // Task 6
+    function generateRange() {
+      const start = parseInt(document.getElementById('start').value);
+      const end = parseInt(document.getElementById('end').value);
+      const step = parseInt(document.getElementById('step').value) || 1;
+      const result = document.getElementById('result6');
+
+      if (isNaN(start) || isNaN(end)) {
+        result.innerText = "Please enter valid numbers.";
+        return;
+      }
+
+      result.innerText = `Range: ${range(start, end, step)}`;
+    }
+
+    function range(start, end, step = 1) {
+      const result = [];
+      if (step > 0) {
+        for (let i = start; i <= end; i += step) {
+          result.push(i);
+        }
+      } else {
+        for (let i = start; i >= end; i += step) {
+          result.push(i);
+        }
+      }
+      return result;
+    }
+
+    // Task 7
+    // Функция для создания матрицы
+    function generateMatrix(rows, cols) {
+      const matrix = [];
+      for (let i = 0; i < rows; i++) {
+        const row = [];
+        for (let j = 0; j < cols; j++) {
+          row.push(Math.floor(Math.random() * 101)); // Случайное число от 0 до 100
+        }
+        matrix.push(row);
+      }
+      return matrix;
+    }
+
+    // Функция для суммирования двух матриц
+    function sumMatrices(matrix1, matrix2) {
+      const result = [];
+      for (let i = 0; i < matrix1.length; i++) {
+        const row = [];
+        for (let j = 0; j < matrix1[i].length; j++) {
+          row.push(matrix1[i][j] + matrix2[i][j]);
+        }
+        result.push(row);
+      }
+      return result;
+    }
+
+    // Функция для генерации и суммирования матриц
+    function generateAndSumMatrices() {
+      const rows = parseInt(document.getElementById('rows').value);
+      const cols = parseInt(document.getElementById('cols').value);
+
+      if (isNaN(rows) || isNaN(cols) || rows <= 0 || cols <= 0) {
+        alert("Please enter valid positive numbers for rows and columns.");
+        return;
+      }
+
+      // Генерация двух матриц
+      const matrix1 = generateMatrix(rows, cols);
+      const matrix2 = generateMatrix(rows, cols);
+
+      // Вывод матриц на экран
+      document.getElementById('matrix1').innerText = "Matrix 1:\n" + matrix1.map(row => row.join(" ")).join("\n");
+      document.getElementById('matrix2').innerText = "Matrix 2:\n" + matrix2.map(row => row.join(" ")).join("\n");
+
+      // Суммирование матриц
+      const sumMatrix = sumMatrices(matrix1, matrix2);
+
+      // Вывод результата
+      document.getElementById('sumMatrix').innerText = "Sum of Matrices:\n" + sumMatrix.map(row => row.join(" ")).join("\n");
+      document.getElementById('result7').innerText = "Sum calculated successfully!";
+    }
+
+    // Task 8
+    function unionArrays() {
+      const input = document.getElementById('arraysInput').value;
+      const result = document.getElementById('result8');
+      try {
+        const arrays = input.match(/\[.*?\]/g).map(arr => JSON.parse(arr));
+        result.innerText = `Union: ${MyUnionFunc(...arrays)}`;
+      } catch (e) {
+        result.innerText = "Invalid input.";
+      }
+    }
+
+    function MyUnionFunc(...arrays) {
+      const uniqueElements = new Set();
+      for (const array of arrays) {
+        if (!Array.isArray(array)) {
+          console.log("Only one-dimensional arrays are supported.");
+          return;
+        }
+        for (const element of array) {
+          uniqueElements.add(element);
+        }
+      }
+      return Array.from(uniqueElements);
+    }
+
+    // Task 9
+    function flattenArray() {
+      const input = document.getElementById('arrayInput').value;
+      const result = document.getElementById('result9');
+      try {
+        const array = JSON.parse(input);
+        result.innerText = `Flattened: ${MyArrayFlattenFunc(array)}`;
+      } catch (e) {
+        result.innerText = "Invalid input.";
+      }
+    }
+
+    function MyArrayFlattenFunc(arr) {
+      const result = [];
+      arr.forEach(item => {
+        if (Array.isArray(item)) {
+          result.push(...MyArrayFlattenFunc(item));
+        } else {
+          result.push(item);
+        }
+      });
+      return result;
+    }
+
+    // Task 10
+    function uniqueElements() {
+      const input = document.getElementById('uniqueInput').value;
+      const count = parseInt(document.getElementById('uniqueCount').value);
+      const result = document.getElementById('result10');
+      try {
+        const array = JSON.parse(input);
+        result.innerText = `Unique elements: ${MyFunctionUnique(array, count)}`;
+      } catch (e) {
+        result.innerText = "Invalid input.";
+      }
+    }
+
+    function MyFunctionUnique(arr, count) {
+      const occurrences = {};
+      arr.forEach(item => {
+        occurrences[item] = (occurrences[item] || 0) + 1;
+      });
+
+      return Object.keys(occurrences)
+        .filter(key => occurrences[key] <= count)
+        .map(key => parseInt(key, 10));
+    }
+  </script>
+
+</body>
+</html>

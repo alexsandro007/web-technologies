@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Заказ пиццы</title>
+  <link rel="stylesheet" href="https://muellergridsystem.com/css/mueller-grid.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="top"></div>
+
+  <div class="container">
+    <div class="grid">
+      <div class="form-wrapper">
+        <form action="URL_ПРЕПОДАВАТЕЛЯ" method="post" enctype="multipart/form-data">
+            
+          <h1 class="formname">Форма заказа пиццы</h1>
+
+          <p class="info">
+            Пожалуйста, заполните форму, чтобы заказать пиццу по стандартному или своему рецепту. Мы свяжемся с вами для подтверждения. Спасибо за выбор PizzaMaster!
+          </p>
+          <p class="text-danger">*Обязательные поля</p><br>
+
+          <label for="name">Имя<span class="text-danger">*</span></label>
+          <input type="text" id="name" name="name" required maxlength="20" placeholder="Ваше имя" />
+
+          <label for="phone">Номер телефона<span class="text-danger">*</span></label>
+          <input type="tel" id="phone" name="phone" required placeholder="+375 (__) ___-__-__" />
+
+          <label>Тип заказа<span class="text-danger">*</span></label><br>
+          <label><input type="radio" name="type" value="standard" required /> Стандартная пицца</label><br>
+          <label><input type="radio" name="type" value="custom" /> Свой рецепт</label><br><br>
+
+          <label for="pizza">Выберите пиццу<span class="text-danger">*</span></label>
+          <select id="pizza" name="pizza" required>
+            <option value="" disabled selected>Выберите вариант</option>
+            <option value="Маргарита">Маргарита</option>
+            <option value="Пепперони">Пепперони</option>
+            <option value="Гавайская">Гавайская</option>
+            <option value="Четыре сыра">Четыре сыра</option>
+          </select>
+
+          <label for="customRecipe">Или введите ингредиенты своего рецепта:</label><br>
+          <textarea id="customRecipe" name="customRecipe" rows="5" maxlength="300" placeholder="Например: тесто, соус, сыр, ветчина..."></textarea>
+
+          <label for="imagepin">Загрузите изображение рецепта (если есть):</label>
+          <input type="file" id="imagepin" name="image" accept="image/*" />
+
+          <label for="datetime">Дата и время доставки<span class="text-danger">*</span></label>
+          <input type="date" id="deliveryDate" name="deliveryDate" required />
+          <input type="time" id="deliveryTime" name="deliveryTime" required />
+
+          <label><input type="checkbox" required /> Я согласен на обработку персональных данных</label><br>
+          <label><input type="checkbox" /> Получать уведомления о новинках и акциях</label><br><br>
+
+          <label for="commentarea">Дополнительные комментарии:</label><br>
+          <textarea id="commentarea" name="comments" rows="4" maxlength="500" placeholder="Комментарий..."></textarea>
+
+          <input type="submit" value="Оформить заказ" class="btn-primary" />
+        </form>
+
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

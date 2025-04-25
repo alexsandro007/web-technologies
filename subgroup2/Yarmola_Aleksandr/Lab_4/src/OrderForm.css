@@ -1,0 +1,84 @@
+.order-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 25px;
+  background-color: #fff3e0;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+  color: #ff5722;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #555;
+}
+
+select, input, textarea {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #ffccbc;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.3s;
+}
+
+select:focus, input:focus, textarea:focus {
+  border-color: #ff5722;
+  outline: none;
+}
+
+textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+.selected-dishes {
+  margin-top: 10px;
+}
+
+.dish-tag {
+  display: inline-block;
+  background-color: #ffab91;
+  color: white;
+  padding: 5px 10px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  border-radius: 12px;
+}
+
+.dish-tag button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.submit-btn {
+  background-color: #ff5722;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #e64a19;
+}

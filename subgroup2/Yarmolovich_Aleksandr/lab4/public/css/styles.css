@@ -1,0 +1,77 @@
+body {
+    background-color: #4e275e; /* Темный фон */
+    color: #ffffff; /* Белый текст */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    flex-direction: column;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+h1 {
+    color: #da1d16f6; /* Голубой цвет заголовка */
+}
+
+a {
+    color: #c7c713; /* Голубой цвет ссылок */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline; /* Подчеркивание при наведении на ссылку */
+}
+
+form {
+    background-color: #1e1e1d; /* Темный фон для форм */
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+}
+
+label, p {
+    color: #d2d3d4; /* Голубой цвет надписей */
+    margin-top: 10px;
+    text-align: center;
+}
+
+input {
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #000000; /* Голубая рамка для полей ввода */
+    border-radius: 5px;
+    background: #444444; /* Темный фон для полей ввода */
+    color: #ffffff; /* Белый текст в полях ввода */
+    width: 100%;
+    text-align: center;
+}
+
+button {
+    background-color: #00bfff; /* Голубая кнопка */
+    color: #ffffff; /* Белый текст на кнопке */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #20abb8; /* Темно-голубой при наведении */
+}

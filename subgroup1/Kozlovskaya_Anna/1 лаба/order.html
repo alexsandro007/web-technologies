@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Подтверждение заказа</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #27ae60;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        p {
+            text-align: center;
+            font-size: 1.2em;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: #f2f2f2;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        li strong {
+            color: #2c3e50;
+        }
+
+        .ingredient-note {
+            font-style: italic;
+            color: #e67e22;
+        }
+
+        .back-button {
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            padding: 10px;
+            background-color: #3498db;
+            color: white;
+            text-align: center;
+            font-size: 1.2em;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .back-button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ваш заказ оформлен!</h1>
+        <p>Спасибо за заказ. Вот информация о вашей пицце:</p>
+
+        <ul id="order-details">
+            <li><strong>Имя:</strong> <span id="order-name"></span></li>
+            <li><strong>Пицца:</strong> <span id="order-pizza"></span></li>
+            <li><strong>Размер:</strong> <span id="order-size"></span></li>
+            <li><strong>Адрес доставки:</strong> <span id="order-address"></span></li>
+            <li><strong>Телефон:</strong> <span id="order-phone"></span></li>
+            <li><strong>Ингредиенты (если свой рецепт):</strong> <span id="order-ingredients"></span></li>
+        </ul>
+
+        <a href="index.html" class="back-button">Вернуться на главную</a>
+    </div>
+
+    <script>
+        // Получаем параметры из URL
+        const urlParams = new URLSearchParams(window.location.search);
+
+        // Заполняем информацию на странице
+        document.getElementById('order-name').textContent = urlParams.get('name');
+        document.getElementById('order-pizza').textContent = urlParams.get('pizza');
+        document.getElementById('order-size').textContent = urlParams.get('size');
+        document.getElementById('order-address').textContent = urlParams.get('address');
+        document.getElementById('order-phone').textContent = urlParams.get('phone');
+
+        // Проверяем, есть ли дополнительные ингредиенты
+        const ingredients = urlParams.get('custom-ingredients');
+        if (ingredients) {
+            document.getElementById('order-ingredients').textContent = ingredients;
+        } else {
+            document.getElementById('order-ingredients').textContent = 'Не указаны';
+        }
+    </script>
+</body>
+</html>

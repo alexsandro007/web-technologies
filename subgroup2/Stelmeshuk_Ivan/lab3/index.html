@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Лабораторная работа</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Лабораторная работа</h1>
+
+    <div class="task">
+        <h2>Задача 1: Сравнение чисел</h2>
+        <button onclick="task1()">Запустить</button>
+        <div id="result1" class="result"></div>
+    </div>
+
+    <div class="task">
+        <h2>Задача 2: Номер подъезда</h2>
+        <input id="floors" placeholder="Этажей (1-20)">
+        <input id="entrances" placeholder="Подъездов (1-15)">
+        <input id="flats" placeholder="Квартир на площадке (1-5)">
+        <input id="flatNum" placeholder="Номер квартиры">
+        <button onclick="task2()">Рассчитать</button>
+        <div id="result2" class="result"></div>
+    </div>
+
+    <div class="task">
+        <h2>Задача 3: День недели</h2>
+        <input id="month" placeholder="Месяц (1-12)">
+        <input id="day" placeholder="День (1-31)">
+        <button onclick="task3()">Узнать день</button>
+        <div id="result3" class="result"></div>
+    </div>
+
+    <div class="task">
+        <h2>Задача 4: Операции с числами</h2>
+        <input id="num1" placeholder="Первое число">
+        <input id="num2" placeholder="Второе число">
+        <button onclick="task4()">Рассчитать</button>
+        <div id="result4" class="result"></div>
+    </div>
+
+    <div class="task">
+		<h2>Задача 5: Сумма чисел</h2>
+		<label>Введите числа (через пробел или запятую):</label><br>
+		<input type="text" id="numbersInput" placeholder="Пример: 3 1 1" style="width: 200px;">
+		<br><br>
+		<button onclick="task5()">Рассчитать сумму</button>
+		<div id="result5" class="result"></div>
+	</div>
+
+    <div class="task">
+        <h2>Задача 6: Диапазон</h2>
+        <input id="start" placeholder="Старт">
+        <input id="finish" placeholder="Финиш">
+        <input id="step" placeholder="Шаг (опционально)">
+        <button onclick="task6()">Создать</button>
+        <div id="result6" class="result"></div>
+    </div>
+
+    <div class="task">
+        <h2>Задача 7: Матрицы</h2>
+        <input id="rows" placeholder="Строк">
+        <input id="cols" placeholder="Столбцов">
+        <button onclick="task7()">Создать и суммировать</button>
+        <div id="result7" class="result"></div>
+    </div>
+
+    <div class="task">
+		<h2>Задача 8: Уникальные элементы</h2>
+		<label>Введите массивы (разделяйте пробелами, например: [1,5,5,3] [10,5,1,10] [5,1]):</label><br>
+		<input type="text" id="arraysInput" placeholder="[1,5,5,3] [10,5,1,10] [5,1]" style="width: 300px;">
+		<br><br>
+		<button onclick="task8()">Рассчитать уникальные элементы</button>
+		<div id="result8" class="result"></div>
+	</div>
+
+    <div class="task">
+		<h2>Задача 9: Плоский массив</h2>
+		<label>Введите массив (например: [1,[2],[[5],[3,[4]]]]):</label><br>
+		<input type="text" id="arrayInput" placeholder="[1,[2],[[5],[3,[4]]]]" style="width: 300px;">
+		<br><br>
+		<button onclick="task9()">Сделать плоским</button>
+		<div id="result9" class="result"></div>
+	</div>
+
+    <div class="task">
+        <h2>Задача 10: Уникальные с повторениями</h2>
+        <label>Введите массив или строку (например: [1,2,1,5] или "miru mir"):</label>
+        <input type="text" id="inputData" placeholder="[1,2,1,5,1,5,1,4]">
+        <label>Максимальное количество повторений:</label>
+        <input type="number" id="repetitions" placeholder="3" min="1">
+        <button onclick="task10()">Рассчитать</button>
+        <div id="result10" class="result"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

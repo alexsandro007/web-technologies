@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/spectre.css/dist/spectre.min.css" rel="stylesheet">
+    <title>Заказ билетов на концерт</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="top vw-100 h-25 position-absolute"></div>
+    <div class="container position-relative">
+        <div class="row justify-center">
+            <div class="col-6 bg-white mt-5 border-top-purple">
+                <div>
+                    <form action="URL_ПРЕПОДАВАТЕЛЯ" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <h1 class="formname mt-3">Заказ билетов на концерт</h1>
+                        </div>
+                        <div class="infoblock mt-3">
+                            <p class="info">Заполните эту форму, чтобы заказать билеты на концерт. После оформления заказа менеджер свяжется с вами для подтверждения. Билеты будут отправлены на вашу электронную почту. Спасибо, что выбрали наш сервис! Не <b>someadress@gmail.com</b>? <a href="kakoytosait">Сменить аккаунт</a></p>
+                            <p class="text-danger">*Обязательно</p><br>
+                        </div>
+                        <div class="form-group mb-4">
+                            <label for="name" class="mb-3">Ваше имя<span class="text-danger">*</span></label>
+                            <input type="text" class="form-input" id="name" required placeholder="Ваше имя" maxlength="20">
+                        </div>
+                        <div class="form-group mb-4">
+                            <label for="password" class="mb-3">Введите пароль<span class="text-danger">*</span></label>
+                            <input type="password" class="form-input" id="password" required placeholder="Ваш пароль" pattern="(?=(.*\d))(?=.*[A-Z])[A-Za-z\d]{8,}" maxlength="25">
+                        </div>
+                        <div class="form-group mb-4">
+                            <label for="tickettype" class="mb-3">Выберите тип билета<span class="text-danger">*</span></label>
+                            <select name="tickettype" class="form-select" id="tickettype" required>
+                                <option value="" disabled selected>Выберите тип билета</option>
+                                <option value="standart">Стандартный</option>
+                                <option value="vip">VIP</option>
+                                <option value="fan">Фан-зона</option>
+                            </select>
+                        </div>
+                        <div class="form-group mb-4">
+                            <label for="concert" class="mb-3">Выберите концерт<span class="text-danger">*</span></label>
+                            <select name="concert" class="form-select" id="concert" required>
+                                <option value="" disabled selected>Выберите концерт</option>
+                                <option value="rock_band">Рок-группа "The Hetters"</option>
+                                <option value="pop_singer">Поп-исполнитель "The Weeknd"</option>
+                                <option value="dj_night">DJ Party Night</option>
+                            </select>
+                        </div>
+                        <div class="form-group mb-4">
+                            <label for="dateofconcert" class="mb-3">Дата концерта<span class="text-danger">*</span></label>
+                            <input type="date" required id="dateofconcert" class="form-input">
+                        </div>
+                        <div class="form-group mb-4">
+                            <label for="imagepin" class="mb-3">Отправьте изображение вашего удостоверения<span class="text-danger">*</span></label>
+                            <input type="file" name="image" accept="image/*" id="imagepin" required>
+                        </div>
+                        <div class="form-group mb-4">
+                            <div class="form-checkbox mb-3">
+                                <input type="checkbox" required id="chbox1" class="form-checkbox-input">
+                                <label for="chbox1" class="form-checkbox-label">Я согласен с условиями и политикой конфиденциальности<span class="text-danger">*</span></label>
+                            </div>
+                            <div class="form-checkbox mb-3">
+                                <input type="checkbox" id="chbox2" class="form-checkbox-input">
+                                <label for="chbox2" class="form-checkbox-label">Получать уведомления о будущих концертах</label>
+                            </div>
+                        </div>
+                        <div class="form-group mb-4">
+                            <label for="commentarea" class="mb-3">Ваши пожелания и комментарии:</label>
+                            <textarea name="comments" class="form-textarea" cols="55" rows="5" maxlength="500" placeholder="Введите ваш комментарий"></textarea>
+                        </div>
+                        <div class="form-group mb-4">
+                            <input type="submit" name="submit" value="ОТПРАВИТЬ" id="subbutton" class="btn btn-primary">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

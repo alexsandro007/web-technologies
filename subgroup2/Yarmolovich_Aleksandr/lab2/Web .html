@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма запроса пароля</title>
+    <style>
+        body {
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .field {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="date"],
+        input[type="file"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-top: 5px;
+        }
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+        }
+        .radio-group label {
+            margin-bottom: 5px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Форма запроса пароля</h2>
+        <form>
+            <div class="field">
+                <label for="name">Пожалуйста, укажите ваше имя *</label>
+                <input type="text" id="name" required>
+            </div>
+
+            <div class="field">
+                <label>Какой цвет вам нравится?</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="color" value="red"> Красный</label>
+                    <label><input type="radio" name="color" value="blue"> Синий</label>
+                    <label><input type="radio" name="color" value="black"> Черный</label>
+                    <label><input type="radio" name="color" value="white"> Белый</label>
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="like">Какой ваш любимый год?</label>
+                <select id="like">
+                    <option value="">Выберите</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label for="description">Пожалуйста, опишите (не менее 50 символов) вашу любимую программу для программирования *</label>
+                <textarea id="description" rows="4" required></textarea>
+            </div>
+
+            <div class="field">
+                <label>Какое образование вы получили?</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="education" value="first"> Первое</label>
+                    <label><input type="radio" name="education" value="second"> Второе</label>
+                    <label><input type="radio" name="education" value="third"> Третье</label>
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="image">Пожалуйста, прикрепите любое изображение</label>
+                <input type="file" id="image">
+            </div>
+
+            <div class="field">
+                <label for="date">Пожалуйста, укажите последний понедельник</label>
+                <input type="date" id="date">
+            </div>
+
+            <button type="submit">Отправить</button>
+        </form>
+    </div>
+</body>
+</html>

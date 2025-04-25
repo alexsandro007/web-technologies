@@ -1,0 +1,93 @@
+/* Общие стили */
+body {
+    background-color:rgb(217, 243, 232);
+    font-family: 'Helvetica', 'Arial', sans-serif; /* Более универсальный шрифт */
+    margin: 0;
+    padding: 0;
+}
+
+/* Контейнер для формы */
+.container {
+    /* Контейнер будет занимать 100% доступной ширины, но не более 800px */
+    padding: 20px;
+    margin: 0 40px; /* Увеличиваем отступы слева и справа до 40px */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Верхняя часть */
+.top {
+    background-color:rgb(20, 123, 63);
+    height: 10vh; /* Использование процента высоты для улучшения адаптивности */
+    color: white;
+    font-size: 2rem;
+    padding-left: 0; /* Увеличиваем отступ слева */
+    padding-right: 0; /* Добавляем отступ справа */
+}
+
+/* Стили для textarea */
+textarea {
+    resize: vertical; /* Разрешает вертикальное изменение размера */
+    width: 100%; /* Устанавливаем ширину на 100% для адаптивности */
+    max-width: 100%; /* Ограничиваем по максимальной ширине */
+    padding: 10px;
+    font-size: 1rem; /* Увеличиваем шрифт для лучшей читаемости */
+    border: 1px solid #ccc; /* Легкий бордер */
+    border-radius: 4px; /* Округлые углы для лучшего внешнего вида */
+    background-color: #fff; /* Белый фон */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Легкая тень для текстового поля */
+}
+
+/* Добавляем стили для формы и других элементов */
+.form-group {
+    margin-bottom: 1.5rem; /* Увеличиваем отступы для улучшения внешнего вида */
+}
+
+/* Все инпуты и селекты */
+input, select, .form-radio-input, .form-checkbox-input {
+    width: 100%; /* Устанавливаем ширину на 100% для улучшения адаптивности */
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Учитываем padding и border внутри элемента */
+    background-color: #fff; /* Белый фон */
+}
+
+/* Радиокнопки и чекбоксы */
+.form-radio-input, .form-checkbox-input {
+    width: auto;
+    margin-right: 0.5rem;
+}
+
+/* Кнопка отправки */
+button, .btn {
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    background-color:rgb(40, 168, 115);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover, .btn:hover {
+    background-color:rgb(28, 117, 82); /* Установить цвет при наведении */
+}
+
+/* Стили для ссылок */
+a {
+    color:rgb(79, 73, 204);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Стили для текста ошибок */
+.text-danger {
+    color: #e53935; /* Используем ярко-красный цвет для ошибок */
+}

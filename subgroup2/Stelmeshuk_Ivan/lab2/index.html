@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Request Form</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/milligram@1.4.1/dist/milligram.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="page">
+        <div class="container">
+            <div class="header-bar"></div>
+            <div class="form-content">
+                <h2>Password request form</h2>
+                <p class="text-small">* Required</p>
+                <form>
+                    <fieldset>
+                        <label for="name">Please fill your name <span class="required">*</span></label>
+                        <input type="text" id="name" name="name" required>
+                    </fieldset>
+
+                    <fieldset>
+                        <label>What color do you like <span class="required">*</span></label>
+                        <input type="radio" name="color" value="Red" id="red">
+                        <label for="red" class="inline-label">Red</label>
+                        <input type="radio" name="color" value="Green" id="green">
+                        <label for="green" class="inline-label">Green</label>
+                        <input type="radio" name="color" value="Blue" id="blue">
+                        <label for="blue" class="inline-label">Blue</label>
+                        <input type="radio" name="color" value="Black" id="black">
+                        <label for="black" class="inline-label">Black</label>
+                        <input type="radio" name="color" value="White" id="white">
+                        <label for="white" class="inline-label">White</label>
+                        <input type="text" name="color_other" placeholder="Other">
+                    </fieldset>
+
+                    <fieldset>
+                        <label for="town">What town do you like more? <span class="required">*</span></label>
+                        <select id="town" name="town" required>
+                            <option value="">Choose</option>
+                            <option value="Town1">Брест</option>
+                            <option value="Town2">Лондон</option>
+                            <option value="Town3">Берлин</option>
+                        </select>
+                    </fieldset>
+
+                    <fieldset>
+                        <label for="description">Please describe (at least 50 symbols) your favorite programming language <span class="required">*</span></label>
+                        <textarea id="description" name="description" required></textarea>
+                    </fieldset>
+
+                    <fieldset>
+                        <label>What years of education did you really like? <span class="required">*</span></label>
+                        <input type="checkbox" name="education" value="First" id="first">
+                        <label for="first" class="inline-label">First</label>
+                        <input type="checkbox" name="education" value="Second" id="second">
+                        <label for="second" class="inline-label">Second</label>
+                        <input type="checkbox" name="education" value="Third" id="third">
+                        <label for="third" class="inline-label">Third</label>
+                        <input type="checkbox" name="education" value="Fourth" id="fourth">
+                        <label for="fourth" class="inline-label">Fourth</label>
+                    </fieldset>
+
+                    <fieldset>
+                        <label for="file">Please send any image <span class="required">*</span></label>
+                        <input type="file" id="file" name="file" required>
+                    </fieldset>
+
+                    <fieldset>
+                        <label for="date">Set last Monday <span class="required">*</span></label>
+                        <input type="date" id="date" name="date" required>
+                    </fieldset>
+
+                    <button type="submit">SUBMIT</button>
+                </form>
+            </div>
+        </div>
+        <footer>
+            <p>Google Forms</p>
+        </footer>
+    </div>
+</body>
+</html>

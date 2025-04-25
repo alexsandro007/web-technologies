@@ -1,0 +1,71 @@
+body {
+    background-color: #f0ebf8;
+    font-family: sans-serif;
+  }
+  
+  .border-top-purple {
+    border-top: 8px solid #965ff5;
+  }
+  
+  .top {
+    background-color: #673ab7;
+    height: 100px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  .container {
+    padding-top: 120px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .form-wrapper {
+    background-color: white;
+    border-top: 8px solid #965ff5;
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 600px; /* Ограничиваем ширину */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  
+  form input[type="text"],
+  form input[type="tel"],
+  form input[type="date"],
+  form input[type="time"],
+  form select,
+  form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+  }
+  
+  form input[type="submit"] {
+    background-color: #673ab7;
+    color: white;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  form input[type="submit"]:hover {
+    background-color: #4e2d95;
+  }
+  
+  .text-danger {
+    color: red;
+  }
+  
+  .bg-white {
+    background-color: white;
+  }
+  
+  .mt-5 {
+    margin-top: 3rem;
+  }
+  

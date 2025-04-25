@@ -1,0 +1,489 @@
+<template>
+  <div class="flight-search">
+    <!-- Переключатели "Авиабилеты" и "Отели" -->
+    <div class="tabs">
+      <button 
+        class="tab-button" 
+        :class="{ active: activeTab === 'flights' }"
+        @click="activeTab = 'flights'"
+      >
+        Авиабилеты
+      </button>
+      <button 
+        class="tab-button" 
+        :class="{ active: activeTab === 'hotels' }"
+        @click="activeTab = 'hotels'"
+      >
+        Отели
+      </button>
+    </div>
+
+    <!-- Содержимое вкладки "Авиабилеты" -->
+    <form 
+      v-if="activeTab === 'flights'" 
+      @submit.prevent="searchFlights" 
+      class="form-container"
+    >
+      <div v-for="(flight, index) in flights" :key="index" class="flight-section">
+        <!-- Откуда -->
+        <div class="form-field">
+          <label :for="'departure-' + index">Откуда:</label>
+          <input
+            type="text"
+            :id="'departure-' + index"
+            v-model="flight.departure"
+            placeholder="Город отправления"
+            required
+          />
+        </div>
+
+        <!-- Куда -->
+        <div class="form-field">
+          <label :for="'destination-' + index">Куда:</label>
+          <input
+            type="text"
+            :id="'destination-' + index"
+            v-model="flight.destination"
+            placeholder="Город назначения"
+            required
+          />
+        </div>
+
+        <!-- Дата вылета -->
+        <div class="form-field">
+          <label :for="'travelDate-' + index">Дата вылета:</label>
+          <input
+            type="date"
+            :id="'travelDate-' + index"
+            v-model="flight.travelDate"
+            required
+          />
+        </div>
+
+        <!-- Дата возврата -->
+        <div class="form-field">
+          <label :for="'returnDate-' + index">Дата возврата:</label>
+          <input
+            type="date"
+            :id="'returnDate-' + index"
+            v-model="flight.returnDate"
+          />
+        </div>
+
+        <!-- Пассажиры -->
+        <div class="form-field passengers-field">
+          <label :for="'passengers-' + index">Пассажиры:</label>
+          <input
+            type="text"
+            :id="'passengers-' + index"
+            :value="formattedPassengers(flight.passengers)"
+            readonly
+            @click="togglePassengerDropdown(index)"
+            placeholder="Выберите пассажиров"
+          />
+          <div v-if="flight.showPassengerDropdown" class="passenger-dropdown">
+            <div class="dropdown-item">
+              <span>Взрослые</span>
+              <div class="controls">
+                <button @click="decrement(index, 'adults')">-</button>
+                <span>{{ flight.passengers.adults }}</span>
+                <button @click="increment(index, 'adults')">+</button>
+              </div>
+            </div>
+            <div class="dropdown-item">
+              <span>Дети</span>
+              <div class="controls">
+                <button @click="decrement(index, 'children')">-</button>
+                <span>{{ flight.passengers.children }}</span>
+                <button @click="increment(index, 'children')">+</button>
+              </div>
+            </div>
+            <div class="dropdown-item">
+              <span>Младенцы</span>
+              <div class="controls">
+                <button @click="decrement(index, 'infants')">-</button>
+                <span>{{ flight.passengers.infants }}</span>
+                <button @click="increment(index, 'infants')">+</button>
+              </div>
+            </div>
+            <div class="dropdown-item">
+              <span>Класс</span>
+              <select v-model="flight.flightClass">
+                <option value="Эконом">Эконом</option>
+                <option value="Бизнес">Бизнес</option>
+                <option value="Первый">Первый</option>
+              </select>
+            </div>
+            <button @click="applyPassengerSelection(index)" class="apply-button">Применить</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Кнопки "Добавить перелёт" и "Найти билеты" -->
+      <div class="button-wrapper">
+        <button type="button" class="add-flight-button" @click="addFlight">Добавить перелёт</button>
+        <button type="submit" class="search-button">Найти билеты</button>
+      </div>
+    </form>
+
+    <!-- Содержимое вкладки "Отели" -->
+    <form 
+      v-if="activeTab === 'hotels'" 
+      @submit.prevent="searchHotels" 
+      class="form-container"
+    >
+      <div class="hotel-section">
+        <!-- Город -->
+        <div class="form-field">
+          <label for="hotel-city">Город:</label>
+          <input
+            type="text"
+            id="hotel-city"
+            v-model="hotel.city"
+            placeholder="Город или отель"
+            required
+          />
+        </div>
+
+        <!-- Даты заезда/выезда -->
+        <div class="form-field">
+          <label for="check-in">Заезд:</label>
+          <input
+            type="date"
+            id="check-in"
+            v-model="hotel.checkIn"
+            required
+          />
+        </div>
+
+        <div class="form-field">
+          <label for="check-out">Выезд:</label>
+          <input
+            type="date"
+            id="check-out"
+            v-model="hotel.checkOut"
+            required
+          />
+        </div>
+
+        <!-- Количество гостей -->
+        <div class="form-field passengers-field">
+          <label for="hotel-guests">Гости:</label>
+          <input
+            type="text"
+            id="hotel-guests"
+            :value="formattedGuests"
+            readonly
+            @click="toggleGuestsDropdown"
+            placeholder="Выберите гостей"
+          />
+          <div v-if="showGuestsDropdown" class="passenger-dropdown">
+            <div class="dropdown-item">
+              <span>Взрослые</span>
+              <div class="controls">
+                <button @click="decrementGuests('adults')">-</button>
+                <span>{{ hotel.guests.adults }}</span>
+                <button @click="incrementGuests('adults')">+</button>
+              </div>
+            </div>
+            <div class="dropdown-item">
+              <span>Дети</span>
+              <div class="controls">
+                <button @click="decrementGuests('children')">-</button>
+                <span>{{ hotel.guests.children }}</span>
+                <button @click="incrementGuests('children')">+</button>
+              </div>
+            </div>
+            <div class="dropdown-item">
+              <span>Номера</span>
+              <div class="controls">
+                <button @click="decrementGuests('rooms')">-</button>
+                <span>{{ hotel.guests.rooms }}</span>
+                <button @click="incrementGuests('rooms')">+</button>
+              </div>
+            </div>
+            <button @click="applyGuestsSelection" class="apply-button">Применить</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="button-wrapper">
+        <button type="submit" class="search-button">Найти отели</button>
+      </div>
+    </form>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      activeTab: 'flights',
+      flights: [
+        {
+          departure: '',
+          destination: '',
+          travelDate: '',
+          returnDate: '',
+          passengers: { adults: 1, children: 0, infants: 0 },
+          flightClass: 'Эконом',
+          showPassengerDropdown: false,
+        },
+      ],
+      hotel: {
+        city: '',
+        checkIn: '',
+        checkOut: '',
+        guests: {
+          adults: 2,
+          children: 0,
+          rooms: 1
+        }
+      },
+      showGuestsDropdown: false,
+    };
+  },
+  computed: {
+    formattedGuests() {
+      const { adults, children, rooms } = this.hotel.guests;
+      const parts = [];
+      if (adults > 0) parts.push(`${adults} взросл${adults > 1 ? 'ых' : 'ый'}`);
+      if (children > 0) parts.push(`${children} ребёнок${children > 1 ? 'а' : ''}`);
+      if (rooms > 0) parts.push(`${rooms} номер${rooms > 1 ? 'а' : ''}`);
+      return parts.join(', ');
+    }
+  },
+  methods: {
+    addFlight() {
+      this.flights.push({
+        departure: '',
+        destination: '',
+        travelDate: '',
+        returnDate: '',
+        passengers: { adults: 1, children: 0, infants: 0 },
+        flightClass: 'Эконом',
+        showPassengerDropdown: false,
+      });
+    },
+    togglePassengerDropdown(index) {
+      this.flights[index].showPassengerDropdown = !this.flights[index].showPassengerDropdown;
+    },
+    increment(index, type) {
+      this.flights[index].passengers[type]++;
+    },
+    decrement(index, type) {
+      if (this.flights[index].passengers[type] > 0) {
+        this.flights[index].passengers[type]--;
+      }
+    },
+    applyPassengerSelection(index) {
+      this.flights[index].showPassengerDropdown = false;
+    },
+    formattedPassengers(passengers) {
+      const { adults, children, infants } = passengers;
+      const parts = [];
+      if (adults > 0) parts.push(`${adults} взросл${adults > 1 ? 'ых' : 'ый'}`);
+      if (children > 0) parts.push(`${children} ребёнок${children > 1 ? 'а' : ''}`);
+      if (infants > 0) parts.push(`${infants} младен${infants > 1 ? 'цев' : 'ец'}`);
+      return parts.join(', ');
+    },
+    searchFlights() {
+      console.log(this.flights);
+      alert('Поиск билетов завершён!');
+      this.$emit('search-flights', this.flights);
+    },
+    toggleGuestsDropdown() {
+      this.showGuestsDropdown = !this.showGuestsDropdown;
+    },
+    incrementGuests(type) {
+      this.hotel.guests[type]++;
+    },
+    decrementGuests(type) {
+      if (this.hotel.guests[type] > 0) {
+        this.hotel.guests[type]--;
+      }
+      if (type === 'adults' && this.hotel.guests.adults < 1) {
+        this.hotel.guests.adults = 1;
+      }
+      if (type === 'rooms' && this.hotel.guests.rooms < 1) {
+        this.hotel.guests.rooms = 1;
+      }
+    },
+    applyGuestsSelection() {
+      this.showGuestsDropdown = false;
+    },
+    searchHotels() {
+      console.log(this.hotel);
+      alert('Поиск отелей завершён!');
+      this.$emit('search-hotels', this.hotel);
+    }
+  },
+};
+</script>
+
+<style scoped>
+.flight-search {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px;
+  background: #003366;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  color: white;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.tab-button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  background: #555;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px 5px 0 0;
+  transition: background 0.3s, color 0.3s;
+}
+
+.tab-button.active {
+  background: #ffa500;
+  font-weight: bold;
+  color: white;
+}
+
+.tab-button:not(.active):hover {
+  background: #666;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.flight-section, .hotel-section {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.form-field {
+  flex: 1;
+  min-width: 200px;
+  max-width: 250px;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+input,
+select,
+.dropdown-button {
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: none;
+  width: 100%;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-button {
+  background: white;
+  cursor: pointer;
+}
+
+.passenger-dropdown {
+  position: absolute;
+  background: white;
+  color: #333;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  margin-top: 5px;
+  z-index: 10;
+  width: 260px;
+}
+
+.dropdown-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.controls button {
+  padding: 6px 10px;
+  background: #ffa500;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.controls button:hover {
+  background: #cc8400;
+}
+
+.apply-button {
+  background: #ffa500;
+  border: none;
+  padding: 10px;
+  margin-top: 12px;
+  width: 100%;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.apply-button:hover {
+  background: #cc8400;
+}
+
+.add-flight-button {
+  align-self: center;
+  padding: 10px 20px;
+  background: #ffa500;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.add-flight-button:hover {
+  background: #cc8400;
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.search-button {
+  padding: 12px 20px;
+  background: #ffa500;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.search-button:hover {
+  background: #cc8400;
+}
+</style>

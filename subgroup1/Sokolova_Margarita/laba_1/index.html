@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация в социальной сети</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <form action="URL_СЕРВЕРА" method="post" enctype="multipart/form-data">
+        <h2>Форма регистрации в социальной сети</h2>
+
+        <label for="username">Имя пользователя <span style="color: red;">*</span></label>
+        <input type="text" id="username" name="username" placeholder="Введите ваше имя пользователя" required>
+
+        <label for="email">Электронная почта <span style="color: red;">*</span></label>
+        <input type="email" id="email" name="email" placeholder="Введите вашу электронную почту" required>
+
+        <label for="password">Пароль <span style="color: red;">*</span></label>
+        <input type="password" id="password" name="password" placeholder="Введите пароль" required>
+
+        <label for="confirm-password">Подтверждение пароля <span style="color: red;">*</span></label>
+        <input type="password" id="confirm-password" name="confirm-password" placeholder="Подтвердите пароль" required>
+
+        <label>Пол <span style="color: red;">*</span></label>
+        <div>
+            <label><input type="radio" name="gender" value="Мужской" required> Мужской</label>
+            <label><input type="radio" name="gender" value="Женский"> Женский</label>
+            <label><input type="radio" name="gender" value="Другой"> Другой</label>
+        </div>
+
+        <label for="birthdate">Дата рождения <span style="color: red;">*</span></label>
+        <input type="date" id="birthdate" name="birthdate" required>
+
+        <label for="profile-picture">Фото профиля <span style="color: red;">*</span></label>
+        <input type="file" id="profile-picture" name="profile-picture" accept="image/*" required>
+
+        <label for="bio">О себе:</label>
+        <textarea id="bio" name="bio" rows="3" placeholder="Напишите немного о себе"></textarea>
+
+        <label>Предпочитаемые интересы <span style="color: red;">*</span></label>
+        <div>
+            <label><input type="checkbox" name="interests" value="Спорт"> Спорт</label>
+            <label><input type="checkbox" name="interests" value="Технологии"> Технологии</label>
+            <label><input type="checkbox" name="interests" value="Музыка"> Музыка</label>
+            <label><input type="checkbox" name="interests" value="Путешествия"> Путешествия</label>
+            <label><input type="checkbox" name="interests" value="Искусство"> Искусство</label>
+        </div>
+
+        <label for="country">Страна проживания <span style="color: red;">*</span></label>
+        <input type="text" id="country" name="country" placeholder="Введите страну" required>
+
+        <button type="submit">Зарегистрироваться</button>
+    </form>
+
+    <script>
+        // Дополнительный код для подтверждения пароля
+        document.getElementById('confirm-password').addEventListener('input', function() {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+
+            if (password !== confirmPassword) {
+                document.getElementById('confirm-password').setCustomValidity('Пароли не совпадают');
+            } else {
+                document.getElementById('confirm-password').setCustomValidity('');
+            }
+        });
+    </script>
+</body>
+</html>

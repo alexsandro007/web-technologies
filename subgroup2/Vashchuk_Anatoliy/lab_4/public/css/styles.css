@@ -1,0 +1,72 @@
+body {
+    background-color: #121212; /* Темный фон */
+    color: #E0E0E0; /* Светлый текст */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #BB86FC; /* Фиолетовый акцент */
+    text-align: center;
+}
+
+nav {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+nav a {
+    color: #BB86FC;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+form {
+    background-color: #1E1E1E; /* Темный фон формы */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    color: #BB86FC;
+    display: block;
+}
+
+input, select {
+    width: calc(100% - 22px);
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background: #2C2C2C;
+    color: #E0E0E0;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #BB86FC;
+    color: #121212;
+    border: none;
+    padding: 10px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #9B68DF;
+}

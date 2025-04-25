@@ -1,0 +1,47 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
+
+.trip-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.trip-form input,
+.trip-form textarea {
+  padding: 8px;
+  font-size: 16px;
+}
+
+.trip-form button {
+  padding: 10px;
+  background-color: #0070f3;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.trip-form button:hover {
+  background-color: #005bb5;
+}
+
+.trip-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.trip-item {
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+}

@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бронирование туристической путевки</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e9d6f5;
+            padding: 20px;
+            text-align: center;
+        }
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        .form-container h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .form-group button {
+            padding: 10px 15px;
+            background-color: #673ab7;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .form-group button:hover {
+            background-color: #5a2ea7;
+        }
+        .radio-group, .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .radio-group label, .checkbox-group label {
+            font-weight: normal;
+            display: flex;
+            align-items: center;
+        }
+        .radio-group input, .checkbox-group input {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Бронирование туристической путевки</h2>
+        <form action="https://example.com/submit" method="post">
+            <div class="form-group">
+                <label for="name">Ваше имя:</label>
+                <input type="text" id="name" name="name" required pattern="[A-Za-zА-Яа-я\s]{3,}">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="destination">Выберите направление:</label>
+                <select id="destination" name="destination" required>
+                    <option value="">Выберите страну</option>
+                    <option value="TH">Таиланд</option>
+                    <option value="EG">Египет</option>
+                    <option value="TR">Турция</option>
+                    <option value="IT">Италия</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="date">Дата вылета:</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+            <div class="form-group">
+                <label>Какой тип отдыха вы предпочитаете? (выберите один)</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="vacation-type" value="beach" required> Пляжный отдых</label>
+                    <label><input type="radio" name="vacation-type" value="excursion"> Экскурсионный отдых</label>
+                    <label><input type="radio" name="vacation-type" value="active"> Активный отдых</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Какие услуги вы хотите включить? (можно выбрать несколько)</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="services" value="breakfast"> Завтрак</label>
+                    <label><input type="checkbox" name="services" value="transfer"> Трансфер</label>
+                    <label><input type="checkbox" name="services" value="guide"> Экскурсовод</label>
+                    <label><input type="checkbox" name="services" value="insurance"> Страховка</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="comments">Дополнительные пожелания:</label>
+                <textarea id="comments" name="comments" rows="4"></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit">Забронировать</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

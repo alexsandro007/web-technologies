@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Password Request Form</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/topcoat@0.8.0/css/topcoat-mobile-light.min.css">
+  <style>
+    body {
+      background-color: #f0f0f5;
+      font-family: Arial, sans-serif;
+    }
+
+    .topcoat-navigation-bar {
+      background-color: #6a0dad;
+      color: white;
+    }
+
+    .topcoat-list {
+      margin-top: 56px;
+    }
+
+    .topcoat-input-control__label {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .topcoat-input-control__input,
+    .topcoat-textarea-control,
+    .topcoat-select {
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 8px;
+      width: 100%;
+      margin-bottom: 15px;
+    }
+
+    .topcoat-radio-button-group,
+    .topcoat-checkbox-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .topcoat-radio-button,
+    .topcoat-checkbox {
+      margin-bottom: 10px;
+    }
+
+    .topcoat-button {
+      background-color: #4a90e2;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .topcoat-button:hover {
+      background-color: #357ae8;
+    }
+  </style>
+</head>
+<body>
+  <header class="topcoat-navigation-bar is-fixed" role="navigation">
+    <h1 class="topcoat-navigation-bar__title">Password Request Form</h1>
+  </header>
+
+  <div class="topcoat-list">
+    <form class="topcoat-form">
+      <ul class="topcoat-list__container">
+        <li class="topcoat-input-control">
+          <label class="topcoat-input-control__label" for="name">Please fill your name</label>
+          <input class="topcoat-input-control__input" type="text" id="name">
+        </li>
+
+        <li class="topcoat-input-control">
+          <label class="topcoat-input-control__label">What color you like</label>
+          <div class="topcoat-radio-button-group">
+            <input type="radio" name="color" id="red" value="Red">
+            <label class="topcoat-radio-button" for="red">Red</label>
+
+            <input type="radio" name="color" id="green" value="Green">
+            <label class="topcoat-radio-button" for="green">Green</label>
+
+            <input type="radio" name="color" id="blue" value="Blue">
+            <label class="topcoat-radio-button" for="blue">Blue</label>
+
+            <input type="radio" name="color" id="black" value="Black">
+            <label class="topcoat-radio-button" for="black">Black</label>
+
+            <input type="radio" name="color" id="white" value="White">
+            <label class="topcoat-radio-button" for="white">White</label>
+
+            <input type="radio" name="color" id="other" value="Other">
+            <label class="topcoat-radio-button" for="other">Other</label>
+          </div>
+        </li>
+
+        <li class="topcoat-input-control">
+          <label class="topcoat-input-control__label" for="town">What town you like more?</label>
+          <select class="topcoat-select" id="town">
+            <option value="">Choose...</option>
+            <!-- Add options here -->
+          </select>
+        </li>
+
+        <li class="topcoat-input-control">
+          <label class="topcoat-input-control__label" for="language">Favorite programming language</label>
+          <textarea class="topcoat-textarea-control" id="language" rows="3"></textarea>
+        </li>
+
+        <li class="topcoat-input-control">
+          <label class="topcoat-input-control__label">What years of education did you really like?</label>
+          <div class="topcoat-checkbox-group">
+            <input type="checkbox" name="education" id="first" value="First">
+            <label class="topcoat-checkbox" for="first">First</label>
+
+            <input type="checkbox" name="education" id="second" value="Second">
+            <label class="topcoat-checkbox" for="second">Second</label>
+
+            <input type="checkbox" name="education" id="third" value="Third">
+            <label class="topcoat-checkbox" for="third">Third</label>
+
+            <input type="checkbox" name="education" id="fourth" value="Fourth">
+            <label class="topcoat-checkbox" for="fourth">Fourth</label>
+          </div>
+        </li>
+
+        <li class="topcoat-input-control">
+          <label class="topcoat-input-control__label" for="image">Please send any image</label>
+          <input type="file" id="image">
+        </li>
+
+        <li class="topcoat-input-control">
+          <label class="topcoat-input-control__label" for="date">Set last Monday</label>
+          <input type="date" id="date">
+        </li>
+
+        <li>
+          <button type="submit" class="topcoat-button">Submit</button>
+        </li>
+      </ul>
+    </form>
+  </div>
+</body>
+</html>

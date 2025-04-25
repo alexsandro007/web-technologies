@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Поиск билетов</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <nav>
+        <a href="/">Главная</a>
+        <a href="/search">Поиск билетов</a>
+    </nav>
+    <h1>Поиск авиабилетов</h1>
+    <form action="/booking" method="POST">
+        <label for="name">Имя:</label>
+        <input type="text" name="name" id="name" required>
+        
+        <label for="flightNumber">Номер рейса:</label>
+        <input type="text" name="flightNumber" id="flightNumber" required>
+        
+        <label for="date">Дата полета:</label>
+        <input type="date" name="date" id="date" required>
+
+        <label for="email">E-mail:</label>
+        <input type="email" name="email" id="email" required>
+
+        <label for="passengers">Количество пассажиров:</label>
+        <input type="number" name="passengers" id="passengers" min="1" value="1" required>
+        
+        <button type="submit">Забронировать</button>
+    </form>
+</body>
+</html>

@@ -1,77 +1,71 @@
 body {
-    background-color: #4e275e; /* Темный фон */
-    color: #ffffff; /* Белый текст */
-    font-family: Arial, sans-serif;
+    background-color: #FCE4EC; /* Светлый фон страницы */
+    color: #333; /* Темный текст */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Современный шрифт */
     margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    text-align: center;
-    flex-direction: column;
-}
-
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
+    padding: 20px;
 }
 
 h1 {
-    color: #da1d16f6; /* Голубой цвет заголовка */
+    color: #F48FB1; /* Розовый цвет заголовка */
+    text-align: center; /* Центрирование заголовка */
 }
 
-a {
-    color: #c7c713; /* Голубой цвет ссылок */
+nav {
+    text-align: center; /* Центрирование навигации */
+    margin-bottom: 20px; /* Отступ снизу */
+}
+
+nav a {
+    color: #F48FB1; /* Розовый цвет ссылок */
     text-decoration: none;
+    margin: 0 15px; /* Отступ между ссылками */
+    font-weight: bold; /* Жирный шрифт для ссылок */
 }
 
-a:hover {
+nav a:hover {
     text-decoration: underline; /* Подчеркивание при наведении на ссылку */
 }
 
 form {
-    background-color: #1e1e1d; /* Темный фон для форм */
+    background-color: #FFFFFF; /* Белый фон для формы */
     padding: 20px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 300px;
+    border-radius: 10px; /* Закругленные углы */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Тень для формы */
+    max-width: 500px; /* Максимальная ширина формы */
+    margin: 0 auto; /* Центрирование формы */
 }
 
-label, p {
-    color: #d2d3d4; /* Голубой цвет надписей */
-    margin-top: 10px;
-    text-align: center;
+.form-group {
+    margin-bottom: 15px; /* Отступ между группами полей */
 }
 
-input {
-    display: block;
-    margin: 10px 0;
+label {
+    color: #F48FB1; /* Розовый цвет надписей */
+    display: block; /* Блоковое отображение для меток */
+}
+
+input, select {
+    width: calc(100% - 22px); /* Полная ширина минус отступы */
     padding: 10px;
-    border: 1px solid #000000; /* Голубая рамка для полей ввода */
-    border-radius: 5px;
-    background: #444444; /* Темный фон для полей ввода */
-    color: #ffffff; /* Белый текст в полях ввода */
-    width: 100%;
-    text-align: center;
+    border: 1px solid #F8BBD0; /* Розовая рамка для полей ввода */
+    border-radius: 5px; /* Закругленные углы */
+    background: #FCE4EC; /* Светло-розовый фон для полей ввода */
+    color: #333; /* Темный текст в полях ввода */
+    box-sizing: border-box; /* Учитывать padding и border в расчете ширины */
 }
 
 button {
-    background-color: #00bfff; /* Голубая кнопка */
+    background-color: #F8BBD0; /* Розовая кнопка */
     color: #ffffff; /* Белый текст на кнопке */
     border: none;
-    padding: 10px 20px;
+    padding: 10px 0; /* Убираем дополнительно padding по бокам */
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 10px;
-    width: 100%;
+    width: 100%; /* Полная ширина кнопки */
+    font-size: 16px; /* Размер шрифта кнопки */
 }
 
 button:hover {
-    background-color: #20abb8; /* Темно-голубой при наведении */
+    background-color: #F48FB1; /* Более темный розовый при наведении */
 }

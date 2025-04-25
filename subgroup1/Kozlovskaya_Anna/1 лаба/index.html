@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Заказ пиццы</title>
+    <link rel="stylesheet" href="style.css"> <!-- Подключите ваш CSS файл -->
+</head>
+<body>
+    <div class="container">
+        <h1>Заказ пиццы</h1>
+        <form id="order-form" action="order.html" method="GET">
+            <div class="form-group">
+                <label for="name">Имя</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="pizza">Выберите пиццу</label>
+                <select id="pizza" name="pizza" required>
+                    <option value="margherita">Маргарита</option>
+                    <option value="pepperoni">Пепперони</option>
+                    <option value="hawaiian">Гавайская</option>
+                    <option value="veggie">Овощная</option>
+                    <option value="custom">Собственный рецепт</option>
+                </select>
+            </div>
+
+            <div class="form-group" id="custom-recipe" style="display: none;">
+                <label for="custom-ingredients">Ваши ингредиенты</label>
+                <textarea id="custom-ingredients" name="custom-ingredients" placeholder="Укажите ингредиенты для пиццы" rows="4"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="size">Размер пиццы</label>
+                <select id="size" name="size" required>
+                    <option value="small">Маленькая</option>
+                    <option value="medium">Средняя</option>
+                    <option value="large">Большая</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Адрес доставки</label>
+                <input type="text" id="address" name="address" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Телефон</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+
+            <button type="submit">Оформить заказ</button>
+        </form>
+    </div>
+
+    <script>
+        const pizzaSelect = document.getElementById('pizza');
+        const customRecipeDiv = document.getElementById('custom-recipe');
+
+        pizzaSelect.addEventListener('change', function() {
+            if (pizzaSelect.value === 'custom') {
+                customRecipeDiv.style.display = 'block';
+            } else {
+                customRecipeDiv.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

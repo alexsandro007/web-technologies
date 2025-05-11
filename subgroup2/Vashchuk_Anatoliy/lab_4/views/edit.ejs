@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактирование бронирования</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <nav>
+        <a href="/">Главная</a>
+        <a href="/search">Поиск билетов</a>
+    </nav>
+    <h1>Редактирование бронирования</h1>
+    <form action="/edit" method="POST">
+        <input type="hidden" name="flightNumber" value="<%= flightNumber %>">
+        
+        <label for="name">Имя:</label>
+        <input type="text" name="name" id="name" value="<%= name %>" required>
+        
+        <label for="date">Дата полета:</label>
+        <input type="date" name="date" id="date" value="<%= date %>" required>
+
+        <label for="email">E-mail:</label>
+        <input type="email" name="email" id="email" value="<%= email %>" required>
+
+        <label for="passengers">Количество пассажиров:</label>
+        <input type="number" name="passengers" id="passengers" min="1" value="<%= passengers %>" required>
+
+        <label for="departureCity">Город отправления:</label>
+        <select name="departureCity" id="departureCity" required>
+            <option value="<%= departureCity || '' %>" selected><%= departureCity || 'Выберите город' %></option>
+            <option value="Брест">Брест</option>
+            <option value="Гродно">Гродно</option>
+            <option value="Минск">Минск</option>
+            <option value="Москва">Москва</option>
+            <option value="Тбилиси">Грузия (Тбилиси)</option>
+            <option value="Анкара">Турция (Анкара)</option>
+            <option value="Сочи">Сочи</option>
+            <option value="Киев">Киев</option>
+            <option value="Варшава">Варшава</option>
+        </select>
+
+        <label for="destinationCity">Город назначения:</label>
+        <select name="destinationCity" id="destinationCity" required>
+            <option value="<%= destinationCity || '' %>" selected><%= destinationCity || 'Выберите город' %></option>
+            <option value="Брест">Брест</option>
+            <option value="Гродно">Гродно</option>
+            <option value="Минск">Минск</option>
+            <option value="Москва">Москва</option>
+            <option value="Тбилиси">Грузия (Тбилиси)</option>
+            <option value="Анкара">Турция (Анкара)</option>
+            <option value="Сочи">Сочи</option>
+            <option value="Киев">Киев</option>
+            <option value="Варшава">Варшава</option>
+        </select>
+
+        <button type="submit" style="margin-top: 20px;">Сохранить изменения</button>
+    </form>
+</body>
+</html>

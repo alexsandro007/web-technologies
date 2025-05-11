@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Бронирование завершено</title>
+    <title>Подтверждение бронирования</title>
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
@@ -10,20 +10,26 @@
         <a href="/">Главная</a>
         <a href="/search">Поиск билетов</a>
     </nav>
-    <h1>Бронирование успешно завершено</h1>
-    <p>Имя: <%= name %></p>
-    <p>Номер рейса: <%= flightNumber %></p>
-    <p>Дата: <%= date %></p>
-    <p>E-mail: <%= email %></p>
-    <p>Количество пассажиров: <%= passengers %></p>
+    <h1>Подтверждение бронирования</h1>
+    <p><strong>Имя:</strong> <%= name %></p>
+    <p><strong>Номер рейса:</strong> <%= flightNumber %></p>
+    <p><strong>Дата полета:</strong> <%= date %></p>
+    <p><strong>E-mail:</strong> <%= email %></p>
+    <p><strong>Количество пассажиров:</strong> <%= passengers %></p>
+    <p><strong>Город отправления:</strong> <%= departureCity %></p>
+    <p><strong>Город пересадки:</strong> <%= transferCity %></p>
+    <p><strong>Город назначения:</strong> <%= destinationCity %></p>
 
-    <form action="/delete" method="POST">
+   
         <input type="hidden" name="flightNumber" value="<%= flightNumber %>">
-        <button type="submit">Удалить бронирование</button>
+        <button type="submit" class="button" style="padding: 10px 20px; width: auto; min-width: 150px;">Удалить бронирование</button>
     </form>
     
-    <form action="/edit/<%= flightNumber %>" method="GET">
-        <button type="submit">Редактировать бронирование</button>
-    </form>
+    <!-- Кнопка для редактирования -->
+    <a href="/edit/<%= flightNumber %>">
+        <button class="button" style="padding: 10px 20px; width: auto; min-width: 150px;">Редактировать бронирование</button>
+    </a>
+
+    <a href="/search" class="button" style="padding: 10px 20px; width: auto; min-width: 150px;">Вернуться к поиску билетов</a>
 </body>
 </html>

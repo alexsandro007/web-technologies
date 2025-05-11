@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторная работа</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background-color: #e6ecf0; 
+            color: #2c3e50; 
+            margin: 0; 
+            padding: 20px; 
+        }
+    
+        h1 { 
+            text-align: center; 
+            color: #34495e;
+        }
+    
+        .container { 
+            max-width: 860px; 
+            margin: 0 auto; 
+            background: #ffffff; 
+            padding: 30px; 
+            border-radius: 12px; 
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); 
+        }
+    
+        .task { 
+            margin-bottom: 25px; 
+            padding: 20px; 
+            border: 1px solid #dcdcdc; 
+            border-radius: 8px; 
+            background: #f9f9f9; 
+        }
+    
+        input { 
+            margin: 8px 10px 8px 0; 
+            padding: 10px; 
+            border: 1px solid #ccc; 
+            border-radius: 6px; 
+            width: calc(48% - 10px); 
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+    
+        button { 
+            padding: 12px 20px; 
+            background-color: #3498db; 
+            color: white; 
+            border: none; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            transition: background-color 0.3s, transform 0.2s; 
+            font-size: 15px;
+        }
+    
+        button:hover { 
+            background-color: #2980b9; 
+            transform: scale(1.03);
+        }
+    
+        @media (max-width: 600px) {
+            input { width: 100%; margin-bottom: 10px; }
+            button { width: 100%; }
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Решение задач лабораторной работы</h1>
+
+        <div class="task">
+            <h2>Задача 1</h2>
+            <button onclick="compareNumbers()">Сравнить числа</button>
+        </div>
+
+        <div class="task">
+            <h2>Задача 2</h2>
+            <input type="number" id="floors" placeholder="Этажи (1-20)">
+            <input type="number" id="entrances" placeholder="Подъезды (1-15)">
+            <input type="number" id="flats" placeholder="Квартиры (1-5)">
+            <input type="number" id="flatNumber" placeholder="Номер квартиры">
+            <button onclick="findEntrance()">Найти подъезд</button>
+        </div>
+
+        <div class="task">
+            <h2>Задача 3</h2>
+            <input type="number" id="month" placeholder="Месяц (1-12)">
+            <input type="number" id="day" placeholder="День (1-31)">
+            <button onclick="findDayOfWeek()">Узнать день недели</button>
+        </div>
+
+        <div class="task">
+            <h2>Задача 4</h2>
+            <input type="number" id="num1" placeholder="Число 1">
+            <input type="number" id="num2" placeholder="Число 2">
+            <button onclick="calculate()">Вычислить</button>
+        </div>
+
+        <div class="task">
+            <h2>Задача 5</h2>
+            <input type="number" id="sumCount" placeholder="Количество чисел">
+            <button onclick="startSummation()">Суммировать</button>
+        </div>
+
+        <div class="task">
+            <h2>Задача 6</h2>
+            <input type="number" id="start" placeholder="Старт">
+            <input type="number" id="end" placeholder="Финиш">
+            <input type="number" id="step" placeholder="Шаг (по умолчанию 1)">
+            <button onclick="createRange()">Создать диапазон</button>
+        </div>
+
+        <div class="task">
+            <h2>Задача 7</h2>
+            <input type="number" id="rows" placeholder="Количество строк">
+            <input type="number" id="cols" placeholder="Количество столбцов">
+            <button onclick="createMatrix()">Создать матрицу</button>
+        </div>
+
+        <div class="task">
+            <h2>Задача 8</h2>
+            <input type="text" id="arrays" placeholder="Массивы (через запятую)">
+            <button onclick="unionArrays()">Объединить массивы</button>
+        </div>
+
+        <div class="task">
+            <h2>Задача 9</h2>
+            <input type="text" id="nestedArray" placeholder="Вложенный массив">
+            <button onclick="flattenArray()">Сделать плоским</button>
+        </div>
+
+        <div class="task">
+            <h2>Задача 10</h2>
+            <input type="text" id="uniqueInput" placeholder="Массив или строка">
+            <input type="number" id="repeatCount" placeholder="Количество повторений">
+            <button onclick="removeDuplicates()">Удалить дубликаты</button>
+        </div>
+    </div>
+
+    <script>
+        function compareNumbers() {
+            while (true) {
+                const firstInput = prompt("Введите первое число (или 'q' для выхода):");
+                if (firstInput.toLowerCase() === 'q') break;
+
+                const secondInput = prompt("Введите второе число (или 'q' для выхода):");
+                if (secondInput.toLowerCase() === 'q') break;
+
+                const firstNumber = parseFloat(firstInput);
+                const secondNumber = parseFloat(secondInput);
+
+                if (isNaN(firstNumber) || isNaN(secondNumber)) {
+                    alert(isNaN(firstNumber) ? "Первый ввод – не число." : "Второй ввод – не число.");
+                } else {
+                    if (firstNumber === secondNumber) {
+                        alert("Числа равны.");
+                    } else if (firstNumber < secondNumber) {
+                        alert("Первое число меньше.");
+                    } else {
+                        alert("Второе число меньше.");
+                    }
+                }
+            }
+        }
+
+        function findEntrance() {
+            const floors = parseInt(document.getElementById("floors").value);
+            const entrances = parseInt(document.getElementById("entrances").value);
+            const flats = parseInt(document.getElementById("flats").value);
+            const flatNumber = parseInt(document.getElementById("flatNumber").value);
+
+            if (isNaN(floors) || isNaN(entrances) || isNaN(flats) || isNaN(flatNumber)) {
+                alert("Все значения должны быть числами.");
+                return;
+            }
+
+            if (floors < 1 || floors > 20 || entrances < 1 || entrances > 15 || flats < 1 || flats > 5) {
+                alert("Некорректные значения характеристик.");
+                return;
+            }
+
+            const totalFlats = floors * entrances * flats;
+            if (flatNumber < 1 || flatNumber > totalFlats) {
+                alert("Некорректный номер квартиры.");
+                return;
+            }
+
+            const entranceNumber = Math.ceil(flatNumber / (floors * flats));
+            alert(`Квартира находится в подъезде: ${entranceNumber}`);
+        }
+
+        function findDayOfWeek() {
+            const month = parseInt(document.getElementById("month").value);
+            const day = parseInt(document.getElementById("day").value);
+            const date = new Date(2022, month - 1, day);
+            const days = ["воскресенье", "понедельник", "вторник", "среда", "четверг", "пятница", "суббота"];
+
+            if (isNaN(date.getTime()) || month < 1 || month > 12 || day < 1 || day > 31) {
+                alert("Некорректные значения даты.");
+                return;
+            }
+
+            alert(`День недели: ${days[date.getDay()]}`);
+        }
+
+        function calculate() {
+            const num1 = parseInt(document.getElementById("num1").value);
+            const num2 = parseInt(document.getElementById("num2").value);
+
+            if (isNaN(num1) || isNaN(num2)) {
+                alert("Оба значения должны быть числами.");
+                return;
+            }
+
+            let result;
+            if (num1 % 2 === 0 && num2 % 2 === 0) {
+                result = num1 * num2;
+            } else if (num1 % 2 !== 0 && num2 % 2 !== 0) {
+                result = num1 + num2;
+            } else {
+                result = (num1 % 2 === 0) ? num2 : num1;
+            }
+            alert(`Результат: ${result}`);
+        }
+
+        function startSummation() {
+            const count = parseInt(document.getElementById("sumCount").value);
+            let total = 0;
+
+            const sumNumbers = (num) => {
+                total += num;
+                return sumNumbers;
+            };
+
+            for (let i = 0; i < count; i++) {
+                const number = parseInt(prompt(`Введите число ${i + 1}:`));
+                if (!isNaN(number)) {
+                    sumNumbers(number);
+                } else {
+                    alert("Некорректное число.");
+                    return;
+                }
+            }
+            alert(`Сумма: ${total}`);
+        }
+
+        function createRange() {
+            const start = parseInt(document.getElementById("start").value);
+            const end = parseInt(document.getElementById("end").value);
+            const step = parseInt(document.getElementById("step").value) || 1;
+
+            const range = [];
+            if (step > 0) {
+                for (let i = start; i <= end; i += step) {
+                    range.push(i);
+                }
+            } else {
+                for (let i = start; i >= end; i += step) {
+                    range.push(i);
+                }
+            }
+            alert(`Диапазон: ${range.join(", ")}`);
+        }
+
+        function createMatrix() {
+            const rows = parseInt(document.getElementById("rows").value);
+            const cols = parseInt(document.getElementById("cols").value);
+            const matrix = [];
+
+            for (let i = 0; i < rows; i++) {
+                const row = [];
+                for (let j = 0; j < cols; j++) {
+                    row.push(Math.floor(Math.random() * 101));
+                }
+                matrix.push(row);
+            }
+            alert(`Сгенерированная матрица: ${JSON.stringify(matrix)}`);
+        }
+
+        function unionArrays() {
+            const arraysInput = document.getElementById("arrays").value.split(",").map(arr => arr.trim().split(" ").map(Number));
+            const uniqueElements = new Set();
+
+            for (const array of arraysInput) {
+                if (Array.isArray(array)) {
+                    for (const num of array) {
+                        uniqueElements.add(num);
+                    }
+                } else {
+                    alert("Функция работает только с одномерными массивами.");
+                    return;
+                }
+            }
+
+            alert(`Уникальные элементы: ${Array.from(uniqueElements).join(", ")}`);
+        }
+
+        function flattenArray() {
+            const nestedArray = JSON.parse(document.getElementById("nestedArray").value);
+            const flatArray = [];
+
+            const flatten = (arr) => {
+                for (const item of arr) {
+                    if (Array.isArray(item)) {
+                        flatten(item);
+                    } else {
+                        flatArray.push(item);
+                    }
+                }
+            };
+
+            flatten(nestedArray);
+            alert(`Плоский массив: ${flatArray.join(", ")}`);
+        }
+
+        function removeDuplicates() {
+            const input = document.getElementById("uniqueInput").value;
+            const repeatCount = parseInt(document.getElementById("repeatCount").value);
+            const elements = input.split(',').map(item => item.trim());
+            const uniqueElements = [];
+
+            for (const element of elements) {
+                if (elements.filter(e => e === element).length < repeatCount && !uniqueElements.includes(element)) {
+                    uniqueElements.push(element);
+                }
+            }
+            alert(`Результат: ${uniqueElements.join(", ")}`);
+        }
+    </script>
+</body>
+</html>
